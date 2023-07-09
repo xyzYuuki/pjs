@@ -46,5 +46,5 @@ if game.PlaceId == 13883279773 or game.PlaceId == 6152116144 then
 else
 game.Players.LocalPlayer:Kick("No Perm")
 end
-
+end
 

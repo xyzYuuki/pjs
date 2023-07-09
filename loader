@@ -29,21 +29,22 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/xyzYuuki/235422525255
 if isAllowed then
 -- Mugen Train
 if game.PlaceId == 11468034852 then
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/xyzYuuki/pjs/main/Mugen"))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/xyzYuuki/pjs/main/Mugen"), true)()
 end
 -- Ouwigahara
 if game.PlaceId == 11468075017 then
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/xyzYuuki/pjs/main/Ouwigahara"))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/xyzYuuki/pjs/main/Ouwigahara", true))()
 end
 
 -- Map2
 if game.PlaceId == 13881804983 or game.PlaceId == 13883059853  then
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/xyzYuuki/pjs/main/Map2"))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/xyzYuuki/pjs/main/Map2", true))()
 end
 --Mapa1
 if game.PlaceId == 13883279773 or game.PlaceId == 6152116144 then
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/xyzYuuki/pjs/main/Map1"))()
-end
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/xyzYuuki/pjs/main/Map1", true))()
 else
 game.Players.LocalPlayer:Kick("No Perm")
 end
+
+

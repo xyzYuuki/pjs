@@ -1,0 +1,96 @@
+local WebhookURL = "https://discord.com/api/webhooks/1124541433710391387/RaXFDSJ0BOfBxzW5XiBu2tOb3d1k_y3-JJNZ-V05FdPavB28e0se2aC-s6hXDrkfZGew"
+
+local function sendWebhook(keyUsed)
+    local payload = {
+        ["username"] = "Perm Buyers Bot",
+        ["content"] = string.format("Key Used: %s", keyUsed),
+        ["embeds"] = {{
+            ["title"] = "**PC script has been executed!**",
+            ["description"] = game.Players.LocalPlayer.DisplayName .. " has executed the script.",
+            ["type"] = "rich",
+            ["color"] = tonumber("0xffffff"),
+            ["fields"] = {
+                {
+                    ["name"] = "Hardware ID:",
+                    ["value"] = game:GetService("RbxAnalyticsService"):GetClientId(),
+                    ["inline"] = true
+                }
+            }
+        }}
+    }
+
+    local headers = {
+        ["Content-Type"] = "application/json"
+    }
+
+    local requestBody = game:GetService("HttpService"):JSONEncode(payload)
+
+    local response = http_request({
+        Url = WebhookURL,
+        Method = "POST",
+        Headers = headers,
+        Body = requestBody
+    })
+end
+
+WhitelistKeys = {
+    key = "0E9085C5-C7BD-4C84-8CFA-580FEA22AE06", --Yuki
+
+}
+
+function checkAccess(key)
+    local hwid = game:GetService("RbxAnalyticsService"):GetClientId()
+    for _, value in pairs(WhitelistKeys) do
+        if value == key and value == hwid then
+            return true
+        end
+    end
+    return false
+end
+
+local wl_key = _G.wl_key -- Armazena a chave da Whitelist em uma variável
+if not checkAccess(wl_key) then
+    game.Players.LocalPlayer:Kick("Quem é você?, verme")
+    return
+end
+
+local wl_key = _G.wl_key -- Armazena a chave da Whitelist em uma variável
+if checkAccess(wl_key) then
+    sendWebhook(wl_key) -- Passa a chave para a função sendWebhook
+    local players = game:GetService("Players")
+
+    game:GetService("StarterGui"):SetCore("SendNotification", {
+        Title = "Welcome!",
+        Text = "Granted Access To, " .. players.LocalPlayer.DisplayName,
+        Icon = "rbxthumb://type=AvatarHeadShot&id=" .. players.LocalPlayer.UserId .. "&w=180&h=180",
+        Duration = 5
+    })
+
+    workspace.FallenPartsDestroyHeight = -50000
+
+    local placeID1 = 5956785391
+    local placeID2 = 6152116144
+    local placeID3 = 13883059853
+    local placeID4 = 11468075017
+    local placeID5 = 11468034852
+    local placeID6 = 13881804983
+    local placeID7 = 13883279773
+
+    if game.PlaceId == placeID1 then
+        loadstring(game:HttpGet(""))() --Menu
+    elseif game.PlaceId == placeID2 then
+        loadstring(game:HttpGet(""))() --Mapa1
+    elseif game.PlaceId == placeID3 then
+        loadstring(game:HttpGet(""))() -- Mapa2
+    elseif game.PlaceId == placeID4 then
+        loadstring(game:HttpGet(""))() --Ouwi
+    elseif game.PlaceId == placeID5 then
+        loadstring(game:HttpGet(""))() --Mugen
+    elseif game.PlaceId == placeID6 then
+        loadstring(game:HttpGet(""))() --Mapa2
+                elseif game.PlaceId == placeID7 then
+        loadstring(game:HttpGet(""))() --Mapa1
+                else
+                    error("Place ID inválido.")
+                end
+                end

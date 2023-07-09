@@ -916,13 +916,25 @@ local function toggleScript()
     end
 end
 
-GodModes:AddToggle('GodmodeNoreq', {
+
+GodModes:AddToggle('GDNR', {
     Text = 'GodMode No Req',
     Default = false,
-    Callback = function(value)
-       getgenv().GDnoReq = value
+    Callback = function(t)
+       getgenv().GDNR = t
     end
 })
+
+
+  spawn(function()
+   while task.wait() do
+       if getgenv().GDNR then
+           pcall(function()
+               game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("evasive"):FireServer()
+           end)
+       end
+   end
+  end)
 
 
 
@@ -1636,14 +1648,6 @@ LP.Character.HumanoidRootPart.CFrame = v:GetModelCFrame()
 	end
 end)
 
---GodMode No req
-spawn(function()
-	while task.wait() do
-		if GDnoReq then
-            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("evasive"):FireServer()
-		end
-	end
-end)
 
 
 

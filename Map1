@@ -486,8 +486,8 @@ local AutoSkills = Tabs.Main:AddRightGroupbox('Auto Skills')
 local Profile = Tabs.Main:AddLeftGroupbox('Profile')
 
 
-local Tween = Tabs.Teleports:AddLeftGroupbox('TweenTP')
-local Insta = Tabs.Teleports:AddRightGroupbox('InstaTP')
+local Tween = Tabs.Teleports:AddLeftGroupbox('Teleports')
+
 
 
 local shouldTeleport = false
@@ -1984,6 +1984,57 @@ local ToggleShockWaveEnabled = false
 
 local GodModes = Tabs.Misc:AddRightGroupbox('God Modes')
 local Modes = Tabs.Misc:AddRightGroupbox('Modes')
+
+	GodModes:AddButton({
+	    Text = 'Wagon GodMode',
+	    Func = function()
+	        local player = game.Players.LocalPlayer
+	        player.Character.HumanoidRootPart.CFrame = CFrame.new(222.136902, 281.832642, -1606.17798)
+	
+	        wait(0.8)
+	
+	        local player = game:GetService("Players").LocalPlayer
+	
+	        local ohString1 = "AddQuest"
+	        local ohString2 = "Players." .. player.Name .. ".PlayerGui.Npc_Dialogue.LocalScript.Functions"
+	        local ohNumber3 = 18455.7521223
+	        local ohInstance4 = game:GetService("ReplicatedStorage").Player_Data[player.Name].Quest
+	        local ohTable5 = {
+	            ["List"] = {
+	                [1] = {
+	                    ["Name"] = "Deliver wagon",
+	                    ["Progress"] = {
+	                        [1] = 0,
+	                        [2] = 1
+	                    }
+	                }
+	            },
+	            ["Current"] = "Deliver grandpa Wagwon's wagon"
+	        }
+	
+	        game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(ohString1, ohString2, ohNumber3, ohInstance4, ohTable5)
+	
+	        wait(0.4)
+	
+	        local player = game.Players.LocalPlayer
+	        local wagonName = player.Name .. "'s Wagon"
+	        local wagon = player.Character:FindFirstChild(wagonName)
+	        if wagon then
+	            wagon:Destroy()
+	        end
+	
+	        wait(0.2)
+	
+	        local player = game.Players.LocalPlayer
+	        local playerGui = player.PlayerGui
+	        local quest = playerGui.Menu.Quest
+	
+	        if quest then
+	            quest:Destroy()
+	        end
+	end,
+	    DoubleClick = false,
+	})
 
 GodModes:AddToggle('Swamp', {
     Text = 'Swamp',

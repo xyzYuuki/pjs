@@ -1,0 +1,2783 @@
+local repo = 'https://raw.githubusercontent.com/xyzYuuki/LinoriaLib/main/'
+
+local Library = loadstring(game:HttpGet(repo .. 'Library.lua'))()
+local ThemeManager = loadstring(game:HttpGet(repo .. 'addons/ThemeManager.lua'))()
+local SaveManager = loadstring(game:HttpGet(repo .. 'addons/SaveManager.lua'))()
+
+local Window = Library:CreateWindow({
+
+
+    Title = 'Yuki Hub | Map 1 | .gg/U8QWcNhkES',
+    Center = true,
+    AutoShow = true,
+    TabPadding = 8,
+    MenuFadeTime = 0.2
+})
+
+function antiafk()
+    local bb = game:GetService("VirtualUser")
+        game:GetService("Players").LocalPlayer.Idled:Connect(function()
+            bb:CaptureController()
+            bb:ClickButton2(Vector2.new())
+        end)
+    end
+antiafk()
+
+repeat wait() until game:IsLoaded()
+game:GetService("Players").LocalPlayer.Idled:connect(function()
+game:GetService("VirtualUser"):ClickButton2(Vector2.new())
+end)
+
+local player = game:GetService("Players").LocalPlayer;
+local UIS = game:GetService("UserInputService")
+local VirtualUser = game:GetService("VirtualUser")
+local VIM =game:GetService("VirtualInputManager")
+local ReplStorage = game:GetService("ReplicatedStorage")
+local Players = game:GetService("Players")
+local Imput = game:GetService("UserInputService")
+local COREGUI = game:GetService("CoreGui")
+local LP = game:GetService("Players").LocalPlayer
+local HttpService = game:GetService("HttpService")
+local RunS = game:GetService("RunService")
+local X, Y = 0, 0
+local Mouse = LP:GetMouse()
+local GetLocalName = LP.Name
+local request = (syn and syn.request) or (http and http.request) or http_request
+local client = game:GetService("Players").LocalPlayer
+local Plr = game:GetService("Players").LocalPlayer
+local Data = game:GetService("ReplicatedStorage")["Player_Data"][game.Players.LocalPlayer.Name]
+local Plr = game:GetService("Players").LocalPlayer
+local TweenService = game:GetService("TweenService")
+local Plr = game:GetService("Players").LocalPlayer
+local Data = game:GetService("ReplicatedStorage")["Player_Data"][Plr.Name]
+local Instance_new = Instance.new
+local Vector3_new = Vector3.new
+local CFrame_new = CFrame.new
+local CFrame_Angles = CFrame.Angles
+local coroutine_wrap = coroutine.wrap
+local coroutine_yield = coroutine.yield
+local coroutine_running = coroutine.running
+local string_find = string.find
+local string_match = string.match
+local string_gsub = string.gsub
+local string_sub = string.sub
+local string_byte = string.byte
+local string_split = string.split
+local table_concat = table.concat
+local table_insert = table.insert
+local debug_traceback = debug.traceback
+local math_rad = math.rad
+local math_abs = math.abs
+local math_floor = math.floor
+local pog pog = nil
+local game = game
+local delay = delay
+local wait = wait
+local rawget = rawget
+local error = error
+local rawset = rawset
+local assert = function(p1, p2, p3)
+if not p1 then
+error(p2, p3)
+end
+end
+local newproxy = newproxy
+local ipairs = ipairs
+local getmetatable = getmetatable
+local setmetatable = setmetatable
+local tostring = tostring
+local tonumber = tonumber
+local type = type
+local typeof = typeof
+local pcall = pcall
+local xpcall = xpcall
+local setfenv = setfenv
+local getfenv = getfenv
+local workspace = workspace
+local newcclosure = newcclosure or function(p1)
+return coroutine_wrap(function(...)
+while true do
+coroutine_yield(p1(...))
+end
+end)
+end
+local workspace = workspace
+local player = game.Players.LocalPlayer
+local weapons = {}
+local mobs = {}
+local character = player.Character or player.CharacterAdded:Wait()
+local client = game:GetService("Players").LocalPlayer
+local user = client.Name
+local TweenService = game:GetService("TweenService")
+local noclipE = nil
+local antifall = nil
+local MoveTo = Instance_new("Model").MoveTo
+game:GetService("Players").LocalPlayer.DisplayName = "YukiHub"
+
+local function GetHuman()
+   local h = LP.Character
+   h = h and (h:FindFirstChild("Humanoid") or h:FindFirstChildWhichIsA("Humanoid"))
+   return h or workspace.CurrentCamera.CameraSubject
+end
+
+local GramxProjectFloat = tostring(math.random(0, 100000))
+local TweenFloatVelocity = Vector3.new(0,0,0)
+function CreateTweenFloat()
+   local BV = game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild(GramxProjectFloat) or Instance.new("BodyVelocity")
+   BV.Parent = game.Players.LocalPlayer.Character.HumanoidRootPart
+   BV.Name = GramxProjectFloat
+   BV.MaxForce = Vector3.new(100000, 100000, 100000)
+   BV.Velocity = TweenFloatVelocity
+end
+
+function RemoveDMG()
+   local part  =  game:GetService("StarterPlayer").StarterPlayerScripts.Client_Modules.Modules.Extra.Damage_Text
+
+   local part1 =  game:GetService("ReplicatedStorage").Assets.Extras.Damage_Text
+
+   local part2 = game:GetService("Players").LocalPlayer.PlayerScripts.Client_Modules.Modules.Extra.Damage_Text
+
+   if part then
+       part:Destroy()
+   end
+
+   if part1 then
+       part1:Destroy()
+   end
+
+   if part2 then
+       part2:Destroy()
+   end
+end
+
+function RemovePARTICLES()
+   local COINS = game:GetService("ReplicatedStorage").Assets.Extras.Coin
+
+   local PARTICLES = game:GetService("ReplicatedStorage").Assets.Particles.Parts
+
+   if COINS then
+       COINS:Destroy()
+   end
+
+   if PARTICLES then
+       PARTICLES:Destroy()
+   end
+end
+
+local function GetDistance(Endpoint)
+   if typeof(Endpoint) == "Instance" then
+   Endpoint = Vector3.new(Endpoint.Position.X, game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Y, Endpoint.Position.Z)
+   elseif typeof(Endpoint) == "CFrame" then
+   Endpoint = Vector3.new(Endpoint.Position.X, game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Y, Endpoint.Position.Z)
+   end
+   local Magnitude = (Endpoint - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
+   return Magnitude
+end
+
+function Tween(Endpoint)
+   if typeof(Endpoint) == "Instance" then
+   Endpoint = Endpoint.CFrame
+   end
+   local TweenFunc = {}
+   local Distance = GetDistance(Endpoint)
+   local TweenInfo = game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(Distance/getgenv().TweenSpeed, Enum.EasingStyle.Linear), {CFrame = Endpoint * CFrame.fromAxisAngle(Vector3.new(1,0,0), math.rad(0))})
+   TweenInfo:Play()
+   function TweenFunc:Cancel()
+   TweenInfo:Cancel()
+   return false
+   end
+   if Distance <= 100 then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Endpoint
+   TweenInfo:Cancel()
+   return false
+   end
+   return TweenFunc
+end
+
+function Hop()
+        local PlaceID = game.PlaceId
+        local AllIDs = {}
+        local foundAnything = ""
+        local actualHour = os.date("!*t").hour
+        local Deleted = false
+        function TPReturner()
+            local Site;
+            if foundAnything == "" then
+                Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100'))
+            else
+                Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100&cursor=' .. foundAnything))
+            end
+            local ID = ""
+            if Site.nextPageCursor and Site.nextPageCursor ~= "null" and Site.nextPageCursor ~= nil then
+                foundAnything = Site.nextPageCursor
+            end
+            local num = 0;
+            for i,v in pairs(Site.data) do
+                local Possible = true
+                ID = tostring(v.id)
+                if tonumber(v.maxPlayers) > tonumber(v.playing) then
+                    for _,Existing in pairs(AllIDs) do
+                        if num ~= 0 then
+                            if ID == tostring(Existing) then
+                                Possible = false
+                            end
+                        else
+                            if tonumber(actualHour) ~= tonumber(Existing) then
+                                local delFile = pcall(function()
+                                    AllIDs = {}
+                                    table.insert(AllIDs, actualHour)
+                                end)
+                            end
+                        end
+                        num = num + 1
+                    end
+                    if Possible == true then
+                        table.insert(AllIDs, ID)
+                        wait()
+                        pcall(function()
+                            wait()
+                            game:GetService("TeleportService"):TeleportToPlaceInstance(PlaceID, ID, game.Players.LocalPlayer)
+                        end)
+                        wait(4)
+                    end
+                end
+            end
+        end
+        function Teleport() 
+            while wait() do
+                pcall(function()
+                    TPReturner()
+                    if foundAnything ~= "" then
+                        TPReturner()
+                    end
+                end)
+            end
+        end
+        Teleport()
+    end
+
+    function findMob()
+        local largest = math.huge
+        local closestChild = nil
+        local hrp = character:WaitForChild("HumanoidRootPart")
+        for i, v in pairs(game:GetService("Workspace").Mobs:GetDescendants()) do
+            if v:IsA("Model") and v:FindFirstChild("Humanoid") and v:FindFirstChild("Humanoid").Health > 0 then
+                local magnitude = (character.HumanoidRootPart.Position - v:GetBoundingBox().Position).magnitude
+                if magnitude < largest then
+                    closestChild = v
+                    largest = magnitude
+                end
+            end
+        end
+        return closestChild
+    end
+
+    function findBoss()
+        local largest = math.huge
+        local closestChild = nil
+        local hrp = character:WaitForChild("HumanoidRootPart")
+        for i, v in pairs(game:GetService("Workspace").Mobs.Bosses:GetDescendants()) do
+            if v:IsA("Model") and v:FindFirstChild("Humanoid") and v:FindFirstChild("Humanoid").Health > 0 then
+                local magnitude = (character.HumanoidRootPart.Position - v:GetBoundingBox().Position).magnitude
+                if magnitude < largest then
+                    closestChild = v
+                    largest = magnitude
+                end
+            end
+        end
+        return closestChild
+    end
+
+local function SkillBind(bind)
+   pcall(function()
+       VIM:SendKeyEvent(true,bind,false,game)
+       task.wait()
+       VIM:SendKeyEvent(false,bind,false,game)
+       wait(.2)
+   end)
+end
+
+local BossessTable = {"Sabito", "Susamaru", "Zanegutsu Kuuchie", "Yahaba", "Shiron", "Nezuko", "Slasher", "Giyu", "Sanemi"}
+	local bosCFTable = {
+	    ["Susamaru"] = CFrame.new(1415.65686, 315.908813, -4571.56445, 0.546769679, 9.56999102e-08, -0.837283075, -3.89699188e-08, 1, 8.88496885e-08, 0.837283075, -1.59514606e-08, 0.546769679),
+	    ["Sabito"] = CFrame.new(1257.60046, 275.351685, -2834.26611, -0.999906898, 0, 0.0136531433, 0, 1, 0, -0.0136531433, 0, -0.999906898),
+	    ["Zanegutsu Kuuchie"] = CFrame.new(-336.3461, 425.857422, -2271.75513, -0.698250651, 1.51218398e-08, 0.715853333, -2.08847464e-08, 1, -4.1495408e-08, -0.715853333, -4.39246115e-08, -0.698250651),
+	    ["Yahaba"] = CFrame.new(1415.65686, 315.908813, -4571.56445, 0.546769679, 9.56999102e-08, -0.837283075, -3.89699188e-08, 1, 8.88496885e-08, 0.837283075, -1.59514606e-08, 0.546769679),
+	    ["Shiron"] = CFrame.new(3203.10229, 370.884155, -3953.36035, 0.839348018, 3.06273158e-08, -0.54359442, -9.09106301e-09, 1, 4.23049826e-08, 0.54359442, -3.05667527e-08, 0.839348018),
+	    ["Nezuko"] = CFrame.new(3549.86816, 342.214478, -4595.73145, 0.869256139, 6.38721716e-08, -0.494362026, -6.77404373e-08, 1, 1.00905426e-08, 0.494362026, 2.47170338e-08, 0.869256139),
+	    ["Slasher"] =  CFrame.new(4355.59082, 342.214478, -4386.90527, -0.943093359, 9.45450722e-08, -0.332528085, 7.62970487e-08, 1, 6.79336054e-08, 0.332528085, 3.86968253e-08, -0.943093359),
+	    ["Giyu"] = CFrame.new(3013.30884, 316.95871, -2916.32202, 0.76092875, 3.55993954e-08, 0.648835421, -1.75982926e-08, 1, -3.4228016e-08, -0.648835421, 1.46266848e-08, 0.76092875),
+	    ["Sanemi"] = CFrame.new(1619.91357, 348.461884, -3717.00464, 0.995524168, -1.20393835e-07, 0.0945073739, 1.19773844e-07, 1, 1.22327712e-08, -0.0945073739, -8.58508931e-10, 0.995524168)
+	}
+
+if game.ReplicatedStorage:FindFirstChild("Remotes"):FindFirstChild("getclientping") then 
+    game.ReplicatedStorage:FindFirstChild("Remotes"):FindFirstChild("getclientping").OnClientInvoke = function() 
+        task.wait(5)
+        return true 
+    end 
+end 
+spawn(function()
+   while wait() do
+       pcall(function()
+           SkillActive = AutoUseSkills and (FarmBoss and NearestMobs) or AutoUseSkills and (FarmQuest and NearestMobs) or AutoUseSkills and (FarmMob and NearestMobs) or AutoUseSkills and (AllBosses and NearestMobs)
+           if FarmMethod == "Above" then
+               FarmModes = CFrame.new(0,getgenv().Distance,0) * CFrame.Angles(math.rad(-90),0,0) 
+           elseif FarmMethod == "Below" then
+               FarmModes = CFrame.new(0,-getgenv().Distance,0) * CFrame.Angles(math.rad(90),0,0)
+           elseif FarmMethod == "Behind" then
+               FarmModes = CFrame.new(0,0,getgenv().Distance)
+           end
+           for i,v in pairs(LP.PlayerGui.MainGuis.Items.Scroll:GetChildren()) do
+               Insert = true
+               if v.ClassName == "Frame" and v.Name ~= "Health Elixir" and v.Name ~= "Health Regen Elixir" and v.Name ~= "Stamina Elixir" and v.Name ~= "Bandage" then
+                   for i,v2 in pairs(invTable) do if v2 == v.Name then Insert = false end end
+                   if Insert == true then table.insert(invTable, v.Name) end
+               end
+           end
+       end)
+   end
+  end)
+
+spawn(function()
+   game:GetService("RunService").Stepped:Connect(function()
+       if getgenv().AllBosses or TPtoLocation or TPtoTrainer or getgenv().GotoMuzan or FarmBoss then
+           for _, v in pairs(game:GetService("Players").LocalPlayer.Character:GetDescendants()) do
+               if v:IsA("BasePart") then
+                   v.CanCollide = false    
+               end
+               if v:IsA("Humanoid") then
+                   v:ChangeState(11)
+               end
+           end
+       end
+   end)
+end)
+
+local vu = game:GetService("VirtualUser")
+game:GetService("Players").LocalPlayer.Idled:connect(function()
+   vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+   wait(1)
+   vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+end)
+game.NetworkClient.ChildRemoved:Connect(function()
+  game:GetService("TeleportService"):Teleport(5956785391)
+end)
+game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
+    if child.Name == 'ErrorPrompt' and child:FindFirstChild('MessageArea') and child.MessageArea:FindFirstChild("ErrorFrame") then
+        game:GetService("TeleportService"):Teleport(5956785391)
+    end
+end)
+	
+local function GetNearestBoss()
+
+   local Bosses = game:GetService("Workspace").Mobs:GetDescendants()
+   local BossesTable = {}
+
+   for i,v in pairs(Bosses) do
+       if table.find(BossessTable, v.Name) and v:IsA("Model") and v:FindFirstChild("Humanoid") then
+           if v.Humanoid.Health > 0 then
+               table.insert(BossesTable, v)
+           end
+       end
+   end
+
+   local NearestBoss = nil
+   local NearestBossDistance = math.huge
+
+   for i,v in pairs(BossesTable) do
+       local Distance = GetDistance(v:GetModelCFrame() * FarmModes)
+       if Distance < NearestBossDistance then
+           NearestBoss = v
+           NearestBossDistance = Distance
+       end
+   end
+
+   return NearestBoss
+end
+
+spawn(function()
+   while task.wait() do
+       pcall(function()
+           if getgenv().AllBosses then
+
+               if not LP.Character.HumanoidRootPart:FindFirstChild("BodyVelocity") then
+                   antifall3 = Instance.new("BodyVelocity", LP.Character.HumanoidRootPart)
+                   antifall3.Velocity = Vector3.new(0, 0, 0)
+                   antifall3.MaxForce = Vector3.new(9e9, 9e9, 9e9)
+               elseif LP.Character.HumanoidRootPart:FindFirstChild("BodyVelocity") then
+                   local v = GetNearestBoss()
+
+                               repeat task.wait()                                      
+                                   if GetDistance(v:GetModelCFrame() * FarmModes) < 25 and GetDistance(v:GetModelCFrame() * FarmModes) < 150 then
+                                       if TweenFa then
+                                       TweenFa:Cancel()
+                                       wait(.1)
+                                       end
+                                       LP.Character.HumanoidRootPart.CFrame = v:GetModelCFrame() * FarmModes
+                                   else
+                                       TweenFa = Tween(v:GetModelCFrame() * FarmModes)
+                                   end
+                                   if v.Humanoid.Health > 0 and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and GetDistance(v:GetModelCFrame() * FarmModes) < 10 then
+                                       NearestMobs = true
+                                   elseif v.Humanoid.Health <= 0 or not v:FindFirstChild("Humanoid") and GetDistance(v:GetModelCFrame() * FarmModes) > 10 then
+                                       NearestMobs = false
+                                   end
+                               until not getgenv().AllBosses or not v.Parent or v.Humanoid.Health <= 0 or not v:IsDescendantOf(workspace)
+                               NearestMobs = false
+                       
+                   
+               end
+           else
+               antifall3:Destroy()
+           end
+           if getgenv().AllBosses == false then
+               TweenFa:Cancel()
+           end
+       end)
+   end
+end)
+	
+spawn(function()
+   while task.wait() do
+      if AutoCollectChest then
+                for _, v in pairs(game:GetService("Workspace").Debree:GetChildren()) do
+                   if v.Name == "Loot_Chest" then
+                      for _, c in pairs(v:FindFirstChild("Drops"):GetChildren()) do
+                        local args = { [1] = c.Name }
+                            v["Add_To_Inventory"]:InvokeServer(unpack(args))
+                     end
+                 end
+             end
+        end
+     end
+end)
+
+spawn(function()
+   while task.wait() do
+      if AutoEatSouls then
+         for i,v in pairs(game:GetService("Workspace").Debree:GetChildren()) do
+            if v.Name == "Soul" then
+               pcall(function()
+                  workspace.Debree.Soul.Handle.Eatthedamnsoul:FireServer()
+               end)
+            end
+         end
+      end
+   end
+end)
+
+
+
+local Tabs = {
+
+    Main = Window:AddTab('Main'),
+    Misc = Window:AddTab('Misc'),
+    Teleports = Window:AddTab('Teleports'),
+    ['UI Settings'] = Window:AddTab('UI Settings'),
+}
+
+
+
+local AutoFarm = Tabs.Main:AddLeftGroupbox('Auto Farms')
+local KillAura = Tabs.Main:AddLeftGroupbox('Kill Auras')
+local SkillsAura = Tabs.Main:AddRightGroupbox('Skills Auras')
+local Miscellaneous = Tabs.Misc:AddLeftGroupbox('Miscellaneous')
+local AutoSkills = Tabs.Main:AddRightGroupbox('Auto Skills')
+local Profile = Tabs.Main:AddLeftGroupbox('Profile')
+
+
+local Tween = Tabs.Teleports:AddLeftGroupbox('TweenTP')
+local Insta = Tabs.Teleports:AddRightGroupbox('InstaTP')
+
+
+local shouldTeleport = false
+
+AutoFarm:AddToggle('autorejoin', {
+    Text = 'Auto Rejoin',
+    Default = false,
+    Callback = function(enabled)
+        shouldTeleport = enabled
+    end
+})
+
+local UserInputService = game:GetService("UserInputService")
+local ContextActionService = game:GetService("ContextActionService")
+local mouseEnabled = true
+
+-- Function to disable the mouse clicks
+local function DisableMouseClicks()
+    mouseEnabled = false
+    ContextActionService:BindAction("DisableMouseClicks", function() end, false, Enum.UserInputType.MouseButton1, Enum.UserInputType.MouseButton2)
+end
+
+-- Function to enable the mouse clicks
+local function EnableMouseClicks()
+    mouseEnabled = true
+    ContextActionService:UnbindAction("DisableMouseClicks")
+end
+
+AutoFarm:AddToggle('Ignore', {
+    Text = 'Disable Mouse',
+    Default = false, -- Default value (true / false)
+    Tooltip = 'Disable Mouse [Use this before using Kill Aura]', -- Information shown when you hover over the toggle
+    Callback = function(value)
+        if value then
+            DisableMouseClicks()
+        else
+            EnableMouseClicks()
+        end
+    end
+})
+
+-- Check mouse input and allow or deny based on mouseEnabled variable
+UserInputService.InputBegan:Connect(function(input)
+    if not mouseEnabled and (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.MouseButton2) then
+        return
+    end
+    -- Handle other input events as desired
+end)
+
+
+AutoFarm:AddToggle('WhiteScreen', {
+   Text = 'White Screen [FPS Boost]',
+   Default = false,
+   Callback = function(state)
+      if state then
+         game:GetService("RunService"):Set3dRenderingEnabled(false)
+      else
+         game:GetService("RunService"):Set3dRenderingEnabled(true)
+      end
+   end
+})
+
+repeat wait() until game.CoreGui:FindFirstChild('RobloxPromptGui')
+
+local lp, po, ts = game:GetService('Players').LocalPlayer, game.CoreGui.RobloxPromptGui.promptOverlay, game:GetService('TeleportService')
+
+po.ChildAdded:connect(function(a)
+    if a.Name == 'ErrorPrompt' then
+        repeat
+            if shouldTeleport then
+                ts:Teleport(5956785391)
+                wait(4)
+            else
+                break
+            end
+        until false
+    end
+end)
+
+
+local playerName = game.Players.LocalPlayer.Name
+local raceLabel = Profile:AddLabel("Race: N/A")
+local clanLabel = Profile:AddLabel("Clan: N/A")
+local BreathingLabel = Profile:AddLabel("Breathing: N/A")
+local ArtLabel = Profile:AddLabel("Art: N/A")
+
+
+local function updateLabel()
+    local localplayer = game:GetService("Players").LocalPlayer
+    local clanValue = game:GetService("ReplicatedStorage").Player_Data[localplayer.Name].Clan.Value
+    local raceValue = game:GetService("ReplicatedStorage").Player_Data[localplayer.Name].Race.Value
+    local BreathingValue = game:GetService("ReplicatedStorage").Player_Data[localplayer.Name].Power.Value
+    local ArtValue = game:GetService("ReplicatedStorage").Player_Data[localplayer.Name].Demon_Art.Value
+    
+    clanLabel:SetText("Clan: " .. clanValue)
+    if raceValue == 1 then
+        raceLabel:SetText("Race: Human")
+    elseif raceValue == 2 then
+        raceLabel:SetText("Race: Slayer")
+    elseif raceValue == 3 then
+        raceLabel:SetText("Race: Demon")
+    else
+        raceLabel:SetText("Race: Hybrid")
+    end
+    BreathingLabel:SetText("Breathing: " .. BreathingValue)
+    ArtLabel:SetText("Art: " .. ArtValue)
+end
+game:GetService("RunService").Heartbeat:Connect(updateLabel)
+
+local demonProgressLabel = Profile:AddLabel("Demon Progress: N/A")
+local breathingProgressLabel = Profile:AddLabel("Breathing Progress: N/A")
+
+local function updateLabel()
+    local demonProgress = game:GetService("ReplicatedStorage").Player_Data[playerName].DemonProgress
+    local breathingProgress = game:GetService("ReplicatedStorage").Player_Data[playerName].BreathingProgress
+    local demonText = demonProgress["1"].Value .. "/" .. demonProgress["2"].Value
+    local breathingText = breathingProgress["1"].Value .. "/" .. breathingProgress["2"].Value
+    
+    demonProgressLabel:SetText("Demon Progress: " .. demonText)
+    breathingProgressLabel:SetText("Breathing Progress: " .. breathingText)
+end
+
+game:GetService("RunService").Heartbeat:Connect(updateLabel)
+
+local startTime = os.time()
+
+local timeLabel = Profile:AddLabel("Elapsed Time: 0s")
+
+local function updateLabel()
+    local elapsedTime = os.time() - startTime
+    local formattedTime = string.format("%02d:%02d:%02d", elapsedTime / 3600, (elapsedTime / 60) % 60, elapsedTime % 60)
+    timeLabel:SetText("Elapsed Time: " .. formattedTime)
+end
+
+game:GetService("RunService").Heartbeat:Connect(updateLabel)
+
+--Arrow new script
+
+
+local firing = false -- Variable to track the state
+
+SkillsAura:AddToggle('BypassGKA', {
+    Text = 'Arrow Bypass',
+    Default = false,
+    Callback = function(state)
+        firing = state -- Update the firing state
+
+        if firing then -- Start the loop only if firing is true
+            while firing do -- Loop while firing is true
+                local Handle_Initiate_S_ = game.ReplicatedStorage.Remotes.To_Server.Handle_Initiate_S_
+                Handle_Initiate_S_:InvokeServer("skil_ting_asd", game.Players.LocalPlayer, "arrow_knock_back", 5)
+                wait(6)
+            end
+        end
+    end
+})
+
+local toggle = false -- Variável para controlar o toggle
+
+local function attackLoop()
+    while toggle do
+        local ohString1 = "arrow_knock_back_damage"
+        local ohInstance2 = game:GetService("Players").LocalPlayer
+        local ohInstance4 = nil -- Variável para armazenar o NPC mais próximo encontrado
+        local ohNumber5 = 999999999
+        local ohNumber6 = 999999999
+
+        local mob = findBoss() -- Encontra o NPC mais próximo
+        if mob and mob:FindFirstChild("HumanoidRootPart") then
+            ohInstance4 = mob -- Armazena o NPC mais próximo na variável
+            local ohCFrame3 = mob.HumanoidRootPart.CFrame -- Obtém o CFrame do NPC mais próximo
+
+            for i = 1, 3 do
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(ohString1, ohInstance2, ohCFrame3, ohInstance4, ohNumber5, ohNumber6)
+            end
+        end
+        wait(0.5)
+    end
+end
+
+
+SkillsAura:AddToggle('GKAarroWW', {
+    Text = 'Arrow Aura (Boss)',
+    Default = false,
+    Callback = function(value)
+        toggle = value
+        if toggle then
+            attackLoop() -- Inicia o loop
+        end
+    end
+})
+
+local toggle = false -- Variável para controlar o toggle
+
+local function attackLoop1()
+    while toggle do
+        local ohString1 = "arrow_knock_back_damage"
+        local ohInstance2 = game:GetService("Players").LocalPlayer
+        local ohInstance4 = nil -- Variável para armazenar o NPC mais próximo encontrado
+        local ohNumber5 = 999999999
+        local ohNumber6 = 999999999
+
+        local mob = findMob() -- Encontra o NPC mais próximo
+        if mob and mob:FindFirstChild("HumanoidRootPart") then
+            ohInstance4 = mob -- Armazena o NPC mais próximo na variável
+            local ohCFrame3 = mob.HumanoidRootPart.CFrame -- Obtém o CFrame do NPC mais próximo
+
+            for i = 1, 3 do
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(ohString1, ohInstance2, ohCFrame3, ohInstance4, ohNumber5, ohNumber6)
+            end
+        end
+        wait(0.5)
+    end
+end
+
+SkillsAura:AddToggle('GKaarrow', {
+    Text = 'Arrow Aura (NPCs)',
+    Default = false,
+    Callback = function(value)
+        toggle = value
+        if toggle then
+            attackLoop1() -- Inicia o loop
+        end
+    end
+})
+
+
+
+--//
+AutoSkills:AddToggle('AutoSkill', {
+   Text = 'Auto Skill',
+   Default = false, -- Default value (true / false)
+   Callback = function(t)
+         getgenv().AutoUseSkills = t
+   end
+})
+
+AutoSkills:AddToggle('Z Move', {
+   Text = 'Z',
+   Default = false, -- Default value (true / false)
+   Callback = function(t)
+         getgenv().ZMove = t
+   end
+})
+
+AutoSkills:AddToggle('X Move', {
+   Text = 'X',
+   Default = false, -- Default value (true / false)
+   Callback = function(t)
+         getgenv().XMove = t
+   end
+})
+
+AutoSkills:AddToggle('C Move', {
+   Text = 'C',
+   Default = false, -- Default value (true / false)
+   Callback = function(t)
+         getgenv().CMove = t
+   end
+})
+
+AutoSkills:AddToggle('V Move', {
+   Text = 'V',
+   Default = false, -- Default value (true / false)
+   Callback = function(t)
+         getgenv().VMove = t
+   end
+})
+
+AutoSkills:AddToggle('B Move', {
+   Text = 'B',
+   Default = false, -- Default value (true / false)
+   Callback = function(t)
+         getgenv().BMove = t
+   end
+})
+
+AutoSkills:AddToggle('N Move', {
+   Text = 'N',
+   Default = false, -- Default value (true / false)
+   Callback = function(t)
+         getgenv().NMove = t
+   end
+})
+
+-- // AUTO USE SKILLS - SKILLS
+	
+spawn(function()
+   while task.wait() do
+      pcall(function()
+         if SkillActive then
+            if AutoUseSkills and getgenv().ZMove and not UsingSkill then
+               for i = 1,7 do
+                  UsingSkill = true
+                  SkillBind("Z")
+               end              
+               UsingSkill = false
+            end
+         end
+      end)
+   end
+end)
+
+
+spawn(function()
+   while task.wait() do
+      pcall(function()
+         if SkillActive then
+            if AutoUseSkills and getgenv().XMove and not UsingSkill then
+               for i = 1,7 do
+                  UsingSkill = true
+                  SkillBind("X")
+               end              
+               UsingSkill = false
+            end
+         end
+      end)
+   end
+end)
+
+spawn(function()
+   while task.wait() do
+      pcall(function()
+         if SkillActive then
+            if AutoUseSkills and getgenv().CMove and not UsingSkill then
+               for i = 1,7 do
+                  UsingSkill = true
+                  SkillBind("C")
+               end              
+               UsingSkill = false
+            end
+         end
+      end)
+   end
+end)
+
+spawn(function()
+   while task.wait() do
+      pcall(function()
+         if SkillActive then
+            if AutoUseSkills and getgenv().VMove and not UsingSkill then
+               for i = 1,7 do
+                  UsingSkill = true
+                  SkillBind("V")
+               end              
+               UsingSkill = false
+            end
+         end
+      end)
+   end
+end)
+
+spawn(function()
+   while task.wait() do
+      pcall(function()
+         if SkillActive then
+            if AutoUseSkills and getgenv().BMove and not UsingSkill then
+               for i = 1,7 do
+                  UsingSkill = true
+                  SkillBind("B")
+               end              
+               UsingSkill = false
+            end
+         end
+      end)
+   end
+end)
+
+spawn(function()
+   while task.wait() do
+      pcall(function()
+         if SkillActive then
+            if AutoUseSkills and getgenv().NMove and not UsingSkill then
+               for i = 1,7 do
+                  UsingSkill = true
+                  SkillBind("N")
+               end              
+               UsingSkill = false
+            end
+         end
+      end)
+   end
+end)
+
+
+ getgenv().FarmMethod = "Above"
+ AutoFarm:AddDropdown('FarmMethod', {
+    Values = { 'Above', 'Below', 'Behind'},
+    Default = 1, -- number index of the value / string
+    Multi = false, -- true / false, allows multiple choices to be selected
+    Text = 'Farm Method',
+    Callback = function(self)
+		getgenv().FarmMethod = self
+    end
+ })
+
+ getgenv().TweenSpeed = 200
+ AutoFarm:AddSlider('MySlider', {
+    Text = 'Tween Speed',
+    Default = 200,
+    Min = 10,
+    Max = 500,
+    Rounding = 1,
+    Compact = false,
+    Callback = function(self)
+		getgenv().TweenSpeed = self
+    end
+})
+
+getgenv().Distance = 8
+AutoFarm:AddSlider('MySlider2', {
+    Text = 'Farm Distance',
+    Default = 8,
+    Min = 1,
+    Max = 10,
+    Rounding = 1,
+    Compact = false,
+    Callback = function(self)
+		getgenv().Distance = self
+    end
+})
+
+AutoFarm:AddToggle('FarmBosses', {
+    Text = 'Auto Boss',
+    Default = false, -- Default value (true / false)
+    Callback = function(value)
+        getgenv().AllBosses = value
+    end
+})
+
+AutoFarm:AddToggle('AutoCollectLily', {
+      Text = 'Auto Collect Lily',
+      Default = false, 
+      Callback = function(value)
+         TP = value
+        if TP then
+            getgenv().speed = 270
+            getgenv().AutoRejoin = true -- Automatically rejoins when you're kicked
+            getgenv().delay = 1
+
+            game.Players.PlayerRemoving:Connect(function(player)
+                if player.Name == game.Players.LocalPlayer.Name and getgenv().AutoRejoin then
+                    local ts = game:GetService("TeleportService")
+                    ts:Teleport(game.PlaceId)
+                    autoload()
+                end
+            end)
+
+            local RunService = game:GetService("RunService")
+            local Players = game:GetService("Players")
+            local Player = Players.LocalPlayer
+            local chr = Player.Character
+            local root = chr.HumanoidRootPart
+
+            local TeleportSpeed = getgenv().speed or 250
+            local NextFrame = RunService.Heartbeat
+
+            local function fireproximityprompt(ProximityPrompt, Amount, Skip)
+                assert(ProximityPrompt, "Argument #1 Missing or nil")
+                assert(
+                    typeof(ProximityPrompt) == "Instance" and ProximityPrompt:IsA("ProximityPrompt"),
+                    "Attempted to fire a Value that is not a ProximityPrompt"
+                )
+                local HoldDuration = ProximityPrompt.HoldDuration
+                if Skip then
+                    ProximityPrompt.HoldDuration = 0
+                end
+                for i = 1, Amount or 1 do
+                    ProximityPrompt:InputHoldBegin()
+                    if Skip then
+                        local RunService = game:GetService("RunService")
+                        local Start = tick()
+                        repeat
+                            RunService.Heartbeat:Wait(0.1)
+                        until tick() - Start > HoldDuration
+                    end
+                    ProximityPrompt:InputHoldEnd()
+                end
+                ProximityPrompt.HoldDuration = HoldDuration
+            end
+
+            local function ImprovedTeleport(Target)
+                if typeof(Target) == "Instance" and Target:IsA("BasePart") then
+                    Target = Target.Position
+                end
+                if typeof(Target) == "CFrame" then
+                    Target = Target.p
+                end
+                local HRP = Player.Character and Player.Character:FindFirstChild("HumanoidRootPart")
+                if not HRP then
+                    return
+                end
+                local StartingPosition = HRP.Position
+                local PositionDelta = Target - StartingPosition -- Calculating the difference between the start and end positions.
+                local StartTime = tick()
+                local TotalDuration = (StartingPosition - Target).magnitude / TeleportSpeed
+                repeat
+                    NextFrame:Wait()
+                    local Delta = tick() - StartTime
+                    local Progress = math.min(Delta / TotalDuration, 1) -- Getting the percentage of completion of the teleport (between 0-1, not 0-100)
+                    -- We also use math.min to maximize it at 1 in case the player gets an FPS drop, so it doesn't go past the target.
+                    local MappedPosition = StartingPosition + (PositionDelta * Progress)
+                    HRP.Velocity = Vector3.new() -- Resetting the effect of gravity so it doesn't get too much and drag the player below the ground.
+                    HRP.CFrame = CFrame.new(MappedPosition)
+                until (HRP.Position - Target).magnitude <= TeleportSpeed / 2
+                HRP.Anchored = false
+                HRP.CFrame = CFrame.new(Target)
+            end
+
+            local flowers = game:GetService("Workspace").Demon_Flowers_Spawn
+
+            local function getFlower()
+                local dist, flower = math.huge
+                for i, v in next, flowers:GetChildren() do
+                    if v:IsA("Model") then
+                        local mag = (root.Position - v.WorldPivot.Position).magnitude
+                        if mag < dist then
+                            dist = mag
+                            flower = v
+                        end
+                    end
+                end
+                return flower
+            end
+
+            oldasdqw = coroutine.wrap(function()
+                while TP do
+                    task.wait()
+                    ImprovedTeleport(getFlower().WorldPivot.Position)
+                    task.wait(getgenv().delay)
+                    for i, v in next, getFlower():GetDescendants() do
+                        if v:IsA("ProximityPrompt") then
+                            local try = 0
+                            repeat
+                                wait(0.01)
+                                try += 1
+                                fireproximityprompt(v, 1, true)
+                                if not getFlower() or not TP then
+                                    oldasdqw()
+                                    break
+                                end
+                            until try == 10
+                            getFlower():Destroy()
+                        end
+                    end
+                end
+            end)
+
+            oldasdqw()
+        else
+            TP = false
+            if oldasdqw then
+                oldasdqw()
+            end
+        end
+      end    
+   })
+
+
+AutoFarm:AddToggle('AutoCollect', {
+    Text = 'Auto Collect',
+    Default = false,
+    Callback = function(Value)
+                getgenv().AutoCollectChest = Value
+    end,
+})
+
+spawn(function()
+    while task.wait() do
+        if getgenv().AutoCollectChest then
+            for _, v in pairs(game:GetService("Workspace").Debree:GetChildren()) do
+                if v.Name == "Loot_Chest" then
+                    for _, c in pairs(v:FindFirstChild("Drops"):GetChildren()) do
+                        local args = { [1] = c.Name }
+                        v["Add_To_Inventory"]:InvokeServer(unpack(args))
+                    end
+                end
+            end
+        end
+    end
+end)
+    
+    
+    
+
+
+--------------------kill auras ------------------------
+
+KillAura:AddToggle('FistKA', {
+    Text = 'Fist',
+    Default = false,
+    Callback = function(bool)
+        getgenv().killaura = bool -- Atualiza o valor do killaura
+
+        if bool then
+            getgenv().method = "fist_combat"
+
+            local ReplStorage = game:GetService("ReplicatedStorage")
+            local Players = game:GetService("Players")
+            local client = game:GetService("Players").LocalPlayer
+
+            while getgenv().killaura do
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 1, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 2, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 3, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 4, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 919, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, inf, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 1234, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 1, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 2, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 3, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 4, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 919, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, inf, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 1234, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 1, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 2, "ground_slash")
+                wait(1.7)
+            end
+        end
+    end
+})
+
+KillAura:AddToggle('SwordKA', {
+    Text = 'Sword',
+    Default = false,
+    Callback = function(bool)
+        getgenv().killaura = bool -- Atualiza o valor do killaura
+
+        if bool then
+            getgenv().method = "Sword_Combat_Slash"
+
+            local ReplStorage = game:GetService("ReplicatedStorage")
+            local Players = game:GetService("Players")
+            local client = game:GetService("Players").LocalPlayer
+
+            while getgenv().killaura do
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 1, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 2, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 3, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 4, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 919, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, inf, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 1234, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 1, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 2, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 3, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 4, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 919, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, inf, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 1234, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 1, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 2, "ground_slash")
+                wait(1.7)
+            end
+        end
+    end
+})
+
+KillAura:AddToggle('FansKA', {
+    Text = 'Fans',
+    Default = false,
+    Callback = function(bool)
+        getgenv().killaura = bool -- Atualiza o valor do killaura
+
+        if bool then
+            getgenv().method = "fans_combat_slash"
+
+            local ReplStorage = game:GetService("ReplicatedStorage")
+            local Players = game:GetService("Players")
+            local client = game:GetService("Players").LocalPlayer
+
+            while getgenv().killaura do
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 1, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 2, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 3, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 4, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 919, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, inf, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 1234, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 1, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 2, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 3, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 4, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 919, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, inf, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 1234, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 1, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 2, "ground_slash")
+                wait(1.7)
+            end
+        end
+    end
+})
+
+
+KillAura:AddToggle('ScytheKA', {
+    Text = 'Scythe',
+    Default = false,
+    Callback = function(bool)
+        getgenv().killaura = bool -- Atualiza o valor do killaura
+
+        if bool then
+            getgenv().method = "Scythe_Combat_Slash"
+
+            local ReplStorage = game:GetService("ReplicatedStorage")
+            local Players = game:GetService("Players")
+            local client = game:GetService("Players").LocalPlayer
+
+            while getgenv().killaura do
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 1, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 2, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 3, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 4, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 919, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, inf, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 1234, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 1, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 2, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 3, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 4, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 919, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, inf, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 1234, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 1, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 2, "ground_slash")
+                wait(1.7)
+            end
+        end
+    end
+})
+
+
+KillAura:AddToggle('ClawKA', {
+    Text = 'Claw',
+    Default = false,
+    Callback = function(bool)
+        getgenv().killaura = bool -- Atualiza o valor do killaura
+
+        if bool then
+            getgenv().method = "claw_Combat_Slash"
+
+            local ReplStorage = game:GetService("ReplicatedStorage")
+            local Players = game:GetService("Players")
+            local client = game:GetService("Players").LocalPlayer
+
+            while getgenv().killaura do
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 1, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 2, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 3, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 4, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 919, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, inf, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 1234, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 1, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 2, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 3, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 4, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 919, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, inf, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 1234, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 1, "ground_slash")
+                game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 2, "ground_slash")
+                wait(1.7)
+            end
+        end
+    end
+})
+
+
+--TP Buttons
+	Tween:AddButton({
+	    Text = 'Insta TP Muzan',
+	    Func = function()
+	        local Muzan = game:GetService("Workspace").Muzan
+	local SpawnPosition = Muzan.SpawnPos.Value
+	        LP.Character.HumanoidRootPart.CFrame = CFrame.new(SpawnPosition)
+	    end,
+	    DoubleClick = false,
+	})
+	
+	Tween:AddButton({
+	    Text = 'ButtlerFly Mansion',
+	    Func = function()
+	        local ohString1 = "Players.LocalPlayer.PlayerGui.Npc_Dialogue.Guis.ScreenGui.LocalScript"
+	        local ohNumber2 = 40317.308733599995
+	        local ohString3 = "Butterfly Mension"
+	        game:GetService("ReplicatedStorage").teleport_player_to_location_for_map_tang:InvokeServer(ohString1, ohNumber2, ohString3)
+	    end,
+	    DoubleClick = false,
+	})
+	
+	Tween:AddButton({
+	    Text = 'Kiribating Village',
+	    Func = function()
+	        local ohString1 = "Players.LocalPlayer.PlayerGui.Npc_Dialogue.Guis.ScreenGui.LocalScript"
+	        local ohNumber2 = 40622.1543921
+	        local ohString3 = "Kiribating Village"
+	        game:GetService("ReplicatedStorage").teleport_player_to_location_for_map_tang:InvokeServer(ohString1, ohNumber2, ohString3)
+	    end,
+	    DoubleClick = false,
+	})
+	
+	Tween:AddButton({
+	    Text = 'Zapiwara Cave',
+	    Func = function()
+	        local ohString1 = "Players.LocalPlayer.PlayerGui.Npc_Dialogue.Guis.ScreenGui.LocalScript"
+	        local ohNumber2 = 41236.0080252
+	        local ohString3 = "Zapiwara Cave"
+	        game:GetService("ReplicatedStorage").teleport_player_to_location_for_map_tang:InvokeServer(ohString1, ohNumber2, ohString3)
+	    end,
+	    DoubleClick = false,
+	})
+	
+	Tween:AddButton({
+	    Text = 'Ushumaru Village',
+	    Func = function()
+	        local ohString1 = "Players.LocalPlayer.PlayerGui.Npc_Dialogue.Guis.ScreenGui.LocalScript"
+	        local ohNumber2 = 41285.6572932
+	        local ohString3 = "Ushumaru Village"
+	        game:GetService("ReplicatedStorage").teleport_player_to_location_for_map_tang:InvokeServer(ohString1, ohNumber2, ohString3)
+	    end,
+	    DoubleClick = false,
+	})
+	
+	Tween:AddButton({
+	    Text = 'Waroru Cave',
+	    Func = function()
+	        local ohString1 = "Players.LocalPlayer.PlayerGui.Npc_Dialogue.Guis.ScreenGui.LocalScript"
+	        local ohNumber2 = 41311.0238902
+	        local ohString3 = "Waroru Cave"
+	        
+	        game:GetService("ReplicatedStorage").teleport_player_to_location_for_map_tang:InvokeServer(ohString1, ohNumber2, ohString3)
+	    end,
+	    DoubleClick = false,
+	})
+	
+	Tween:AddButton({
+	    Text = 'Kabiwaru Village',
+	    Func = function()
+	        local ohString1 = "Players.LocalPlayer.PlayerGui.Npc_Dialogue.Guis.ScreenGui.LocalScript"
+	        local ohNumber2 = 41333.432399799996
+	        local ohString3 = "Kabiwaru Village"
+	        
+	        game:GetService("ReplicatedStorage").teleport_player_to_location_for_map_tang:InvokeServer(ohString1, ohNumber2, ohString3)
+	    end,
+	    DoubleClick = false,
+	})
+	
+	Tween:AddButton({
+	    Text = 'Abubu Cave',
+	    Func = function()
+	        local ohString1 = "Players.LocalPlayer.PlayerGui.Npc_Dialogue.Guis.ScreenGui.LocalScript"
+	        local ohNumber2 = 41350.4449346
+	        local ohString3 = "Abubu Cave"
+	        
+	        game:GetService("ReplicatedStorage").teleport_player_to_location_for_map_tang:InvokeServer(ohString1, ohNumber2, ohString3)
+	    end,
+	    DoubleClick = false,
+	})
+	
+	Tween:AddButton({
+	    Text = 'Final Selection',
+	    Func = function()
+	        local ohString1 = "Players.LocalPlayer.PlayerGui.Npc_Dialogue.Guis.ScreenGui.LocalScript"
+	        local ohNumber2 = 41370.952711599995
+	        local ohString3 = "Final Selection"
+	        
+	        game:GetService("ReplicatedStorage").teleport_player_to_location_for_map_tang:InvokeServer(ohString1, ohNumber2, ohString3)
+	    end,
+	    DoubleClick = false,
+	})
+	
+	Tween:AddButton({
+	    Text = 'Ouwbayashi Home',
+	    Func = function()
+	        local ohString1 = "Players.LocalPlayer.PlayerGui.Npc_Dialogue.Guis.ScreenGui.LocalScript"
+	        local ohNumber2 = 41388.9518367
+	        local ohString3 = "Ouwbayashi Home"
+	        
+	        game:GetService("ReplicatedStorage").teleport_player_to_location_for_map_tang:InvokeServer(ohString1, ohNumber2, ohString3)
+	    end,
+	    DoubleClick = false,
+	})
+	
+	Tween:AddButton({
+	    Text = 'Dangerous Woods',
+	    Func = function()
+	        local ohString1 = "Players.LocalPlayer.PlayerGui.Npc_Dialogue.Guis.ScreenGui.LocalScript"
+	        local ohNumber2 = 41411.7517876
+	        local ohString3 = "Dangerous Woods"
+	        
+	        game:GetService("ReplicatedStorage").teleport_player_to_location_for_map_tang:InvokeServer(ohString1, ohNumber2, ohString3)
+	    end,
+	    DoubleClick = false,
+	})
+	
+	Tween:AddButton({
+	    Text = 'Dungeon',
+	    Func = function()
+	        local ohString1 = "Players.LocalPlayer.PlayerGui.Npc_Dialogue.Guis.ScreenGui.LocalScript"
+	        local ohNumber2 = 41432.3210538
+	        local ohString3 = "Dungeon"
+	        
+	        game:GetService("ReplicatedStorage").teleport_player_to_location_for_map_tang:InvokeServer(ohString1, ohNumber2, ohString3)
+	    end,
+	    DoubleClick = false,
+	})
+	
+	Tween:AddButton({
+	    Text = 'Meditate(Old Insta)',
+	    Func = function()
+	        LP.Character.HumanoidRootPart.CFrame = CFrame.new(2814.46948, 317.022034, -3861.58765, 0.414847195, 0, -0.909891069, 0, 1, 0, 0.909891069, 0, 0.414847195)
+	    end,
+	    DoubleClick = false,
+	})
+	
+	Tween:AddButton({
+	    Text = 'Split Bouder(Old Insta)',
+	    Func = function()
+	        LP.Character.HumanoidRootPart.CFrame = CFrame.new(919.366699, 275.050903, -3040.896, 0.991291702, 0, 0.131684288, 0, 1, 0, -0.131684288, 0, 0.991291702)
+	    end,
+	    DoubleClick = false,
+	})
+	
+	Tween:AddButton({
+	    Text = 'Water Trainer(Old Insta)',
+	    Func = function()
+	        LP.Character.HumanoidRootPart.CFrame = CFrame.new(705.209229, 261.426819, -2409.51587, -0.566798735, -5.48522401e-08, -0.641887605, -7.38932258e-08, 1, 2.8182352e-09, 0.641887605, 4.95921633e-08, -0.566798735)
+	    end,
+	    DoubleClick = false,
+	})
+	
+	Tween:AddButton({
+	    Text = 'Thunder Trainer(Old Insta)',
+	    Func = function()
+	        LP.Character.HumanoidRootPart.CFrame = CFrame.new(-322.369507, 426.857788, -2384.4021, 0.361198723, -4.49157973e-08, -0.932488859, 1.14233451e-07, 1, -3.91942434e-09, 0.932488859, -1.05105727e-07, 0.361198723)
+	    end,
+	    DoubleClick = false,
+	})
+	
+	Tween:AddButton({
+	    Text = 'BackRooms(Old Insta)',
+	    Func = function()
+	        local player = game.Players.LocalPlayer
+	    player.Character.HumanoidRootPart.CFrame = CFrame.new(0, getgenv().Distance, 0) * CFrame.Angles(math.rad(-90), 0, 0)
+	    end,
+	    DoubleClick = false,
+	})
+	
+	
+	
+	Tween:AddButton({
+	    Text = 'Ouwbayashi Home',
+	    Func = function()
+	        local ohString1 = "Players.LocalPlayer.PlayerGui.Npc_Dialogue.Guis.ScreenGui.LocalScript"
+	        local ohNumber2 = 41388.9518367
+	        local ohString3 = "Ouwbayashi Home"
+	        
+	        game:GetService("ReplicatedStorage").teleport_player_to_location_for_map_tang:InvokeServer(ohString1, ohNumber2, ohString3)
+	    end,
+	    DoubleClick = false,
+	})
+	
+	Tween:AddButton({
+	    Text = 'Muzan TP (Secure Tween)',
+	    Func = function()
+	        local RunService = game:GetService("RunService")
+	    local Players = game:GetService("Players")
+	    local Player = Players.LocalPlayer
+	    local Character = Player.Character
+	    local HumanoidRootPart = Character.HumanoidRootPart
+	    
+	    local Muzan = game:GetService("Workspace").Muzan
+	    
+	    local TeleportSpeed = 270
+	    local NextFrame = RunService.Heartbeat
+	    
+	    local function ImprovedTeleport(Target)
+	        if typeof(Target) == "Instance" and Target:IsA("BasePart") then
+	            Target = Target.Position
+	        elseif typeof(Target) == "CFrame" then
+	            Target = Target.Position
+	        end
+	    
+	        local StartingPosition = HumanoidRootPart.Position
+	        local PositionDelta = Target - StartingPosition
+	        local StartTime = tick()
+	        local TotalDuration = PositionDelta.Magnitude / TeleportSpeed
+	    
+	        repeat
+	            NextFrame:Wait()
+	            local Delta = tick() - StartTime
+	            local Progress = math.min(Delta / TotalDuration, 1)
+	            local MappedPosition = StartingPosition + PositionDelta * Progress
+	            HumanoidRootPart.Velocity = Vector3.new()
+	            HumanoidRootPart.CFrame = CFrame.new(MappedPosition)
+	        until (HumanoidRootPart.Position - Target).Magnitude <= TeleportSpeed / 2
+	    
+	        HumanoidRootPart.Anchored = false
+	        HumanoidRootPart.CFrame = CFrame.new(Target)
+	    end
+	    
+	    ImprovedTeleport(Muzan.SpawnPos.Value)
+	    end,
+	    DoubleClick = false,
+	})
+
+--Miscellaneous
+
+local Gamepass = Miscellaneous:AddButton({
+    Text = 'Gamepass Unlocker',
+    DoubleClick = false,
+    Tooltip = 'Disable Uniform, Gourd Durability Viewer, Skip Spin, Progression Viewer ',
+    Func = function()
+        local player = game.Players.LocalPlayer
+
+    local gamepass1 = Instance.new("StringValue")
+    local gamepass3 = Instance.new("StringValue")
+    local gamepass4 = Instance.new("StringValue")
+    local gamepass5 = Instance.new("StringValue")
+    gamepass1.Name = "18589360"
+    gamepass3.Name = "18710993"
+    gamepass4.Name = "19241624"
+    gamepass5.Name = "46503236"
+    gamepass1.Parent = player.gamepasses
+    gamepass3.Parent = player.gamepasses
+    gamepass4.Parent = player.gamepasses
+    gamepass5.Parent = player.gamepasses
+
+    --18589360 = Concentração Total Gamepass Z
+    --18710993 = Disable Uniform
+    --19241624 = Gourd Durability Viewer Z
+    --46503236 = Skip Spin Z
+
+    end
+})
+
+local UnlockUlt = Miscellaneous:AddButton({
+    Text = 'Unlock All Ult',
+    DoubleClick = false,
+    Tooltip = 'when leaving the game you will lose ',
+    Func = function()
+        local ult = Instance.new("StringValue")
+                ult.Name = "Arrow Spikes"
+                ult.Value = "Skill"
+                ult.Parent = game:GetService("ReplicatedStorage")["Player_Data"]:FindFirstChild(game:GetService("Players").LocalPlayer.Name)["unlocked_skills"]
+                local ult2 = ult:Clone()
+                local ult3 = ult:Clone()
+                local ult4 = ult:Clone()
+                local ult5 = ult:Clone()
+                local ult6 = ult:Clone()
+                local ult7 = ult:Clone()
+                local ult8 = ult:Clone()
+                local ult9 = ult:Clone()
+                local ult10 = ult:Clone()
+                local ult11 = ult:Clone()
+                local ult12 = ult:Clone()
+                local ult13 = ult:Clone()
+                local ult14 = ult:Clone()
+                local ult15 = ult:Clone()
+                local ult16 = ult:Clone()
+                local ult17 = ult:Clone()
+
+
+                ult2.Name = "Flesh Monster"
+                ult3.Name = "Blood Burst"
+                ult4.Name = "Thunder clap and flash six fold"
+                ult5.Name = "Constant Flux"
+                ult6.Name = "Caprice"
+                ult7.Name = "Idaten Typhoon"
+                ult8.Name = "Speed Rush"
+                ult9.Name = "Tamari Meteor"
+                ult10.Name = "Purgatory"
+                ult11.Name = "Devouring Rush"
+                ult12.Name = "Annihilation Type"
+                ult13.Name = "String Performance"
+                ult14.Name = "Swamp Domain"
+                ult15.Name = "Obscuring Clouds"
+                ult16.Name = "Snowtide Vortex"
+                ult17.Name = "Bodhisattva"
+                ult2.Parent = game:GetService("ReplicatedStorage")["Player_Data"]:FindFirstChild(game:GetService("Players").LocalPlayer.Name)["unlocked_skills"]
+                ult3.Parent = game:GetService("ReplicatedStorage")["Player_Data"]:FindFirstChild(game:GetService("Players").LocalPlayer.Name)["unlocked_skills"]
+                ult4.Parent = game:GetService("ReplicatedStorage")["Player_Data"]:FindFirstChild(game:GetService("Players").LocalPlayer.Name)["unlocked_skills"]
+                ult5.Parent = game:GetService("ReplicatedStorage")["Player_Data"]:FindFirstChild(game:GetService("Players").LocalPlayer.Name)["unlocked_skills"]
+                ult6.Parent = game:GetService("ReplicatedStorage")["Player_Data"]:FindFirstChild(game:GetService("Players").LocalPlayer.Name)["unlocked_skills"]
+                ult7.Parent = game:GetService("ReplicatedStorage")["Player_Data"]:FindFirstChild(game:GetService("Players").LocalPlayer.Name)["unlocked_skills"]
+                ult8.Parent = game:GetService("ReplicatedStorage")["Player_Data"]:FindFirstChild(game:GetService("Players").LocalPlayer.Name)["unlocked_skills"]
+                ult9.Parent = game:GetService("ReplicatedStorage")["Player_Data"]:FindFirstChild(game:GetService("Players").LocalPlayer.Name)["unlocked_skills"]
+                ult10.Parent = game:GetService("ReplicatedStorage")["Player_Data"]:FindFirstChild(game:GetService("Players").LocalPlayer.Name)["unlocked_skills"]
+                ult11.Parent = game:GetService("ReplicatedStorage")["Player_Data"]:FindFirstChild(game:GetService("Players").LocalPlayer.Name)["unlocked_skills"]
+                ult12.Parent = game:GetService("ReplicatedStorage")["Player_Data"]:FindFirstChild(game:GetService("Players").LocalPlayer.Name)["unlocked_skills"]
+                ult13.Parent = game:GetService("ReplicatedStorage")["Player_Data"]:FindFirstChild(game:GetService("Players").LocalPlayer.Name)["unlocked_skills"]
+                ult14.Parent = game:GetService("ReplicatedStorage")["Player_Data"]:FindFirstChild(game:GetService("Players").LocalPlayer.Name)["unlocked_skills"]
+                ult15.Parent = game:GetService("ReplicatedStorage")["Player_Data"]:FindFirstChild(game:GetService("Players").LocalPlayer.Name)["unlocked_skills"]
+                ult16.Parent = game:GetService("ReplicatedStorage")["Player_Data"]:FindFirstChild(game:GetService("Players").LocalPlayer.Name)["unlocked_skills"]
+                ult17.Parent = game:GetService("ReplicatedStorage")["Player_Data"]:FindFirstChild(game:GetService("Players").LocalPlayer.Name)["unlocked_skills"]
+                
+            end
+        })
+
+Miscellaneous:AddToggle('InfStamina', {
+    Text = 'Inf Stamina',
+    Default = false,
+    Callback = function(bool)
+        if bool then
+            if not isRunning then
+                isRunning = true
+                staminaLoop = coroutine.wrap(function()
+                    while isRunning do
+                        getrenv()._G:Stamina(-1)
+                        task.wait()
+                    end
+                end)
+                staminaLoop()
+            end
+        else
+            if isRunning then
+                isRunning = false
+            end
+        end
+    end
+})
+
+Miscellaneous:AddToggle('InfBreathing', {
+    Text = 'Inf Breathing',
+    Default = false,
+    Callback = function(bool)
+                isBreathing = bool
+    end
+})
+
+spawn(function()
+    while wait() do
+        if isBreathing then
+            getrenv()._G.AddBreath("gpthebest", 50)
+        end
+    end
+end)
+
+Miscellaneous:AddToggle('NoSunBurn', {
+    Text = 'No Sun Burn',
+    Default = false,
+    Callback = function(value)
+               if value then
+        game:GetService("Players").LocalPlayer.PlayerScripts["Small_Scripts"].Gameplay["Sun_Damage"].Disabled = true
+       else
+        game:GetService("Players").LocalPlayer.PlayerScripts["Small_Scripts"].Gameplay["Sun_Damage"].Disabled = false
+       end
+    end,
+ })
+ 
+ Miscellaneous:AddToggle('NoCooldown', {
+    Text = 'No Cooldown',
+    Default = false,
+    tooltip = 'Dont spam',
+    Callback = function(bool)
+        getgenv().NoCdMoves = bool -- Atualiza o estado da variável NoCdMoves com o valor do toggle
+
+        -- Verifica se a função oldindex já foi definida
+        if oldindex then
+            return -- Se já foi definida, apenas retorna
+        end
+    
+        -- Define a função original __index como oldindex
+        oldindex = hookmetamethod(game, "__index", function(index, value)
+            if tostring(index) == "LastUsed" and getgenv().NoCdMoves then
+                return 0
+            end
+            return oldindex(index, value)
+        end)
+    end
+})
+
+local SellItems = Tabs.Misc:AddLeftGroupbox('Sell Items')
+
+local player = game:GetService("Players").LocalPlayer
+local itemName = ""
+
+SellItems:AddInput('ItemName', {
+    Default = 'Item Name',
+    Numeric = false,
+    Finished = false,
+    Text = 'Sell Item',
+    Placeholder = 'Item Name',
+    Callback = function(value)
+        itemName = value
+    end
+})
+SellItems:AddButton("Sell x100", function()
+    if itemName == "" then
+        print("Please input an item name.")
+        return
+    end
+    local inventory = game:GetService("ReplicatedStorage").Player_Data[player.Name].Inventory.Items
+    local itemFound = false
+    for _, item in ipairs(inventory:GetDescendants()) do
+        if item.Name == itemName then
+
+            itemFound = true
+            print("Item Found:", item.Name)
+
+            local settings = item.Settings
+            local id = settings.Id.Value
+            print("ID:", id)
+            local args = {
+                [1] = {
+                    [id] = 100
+                },
+                [2] = 0,
+                [3] = 0
+            }
+            game:GetService("ReplicatedStorage").Sell_Items_tang:InvokeServer(unpack(args))
+            
+            break 
+        end
+    end
+    if not itemFound then
+        print("Item not found:", itemName)
+    end
+end)
+
+SellItems:AddButton("Sell x50", function()
+    if itemName == "" then
+        print("Please input an item name.")
+        return
+    end
+    local inventory = game:GetService("ReplicatedStorage").Player_Data[player.Name].Inventory.Items
+    local itemFound = false
+    for _, item in ipairs(inventory:GetDescendants()) do
+        if item.Name == itemName then
+
+            itemFound = true
+            print("Item Found:", item.Name)
+
+            local settings = item.Settings
+            local id = settings.Id.Value
+            print("ID:", id)
+            local args = {
+                [1] = {
+                    [id] = 50
+                },
+                [2] = 0,
+                [3] = 0
+            }
+            game:GetService("ReplicatedStorage").Sell_Items_tang:InvokeServer(unpack(args))
+            
+            break 
+        end
+    end
+    if not itemFound then
+        print("Item not found:", itemName)
+    end
+end)
+
+SellItems:AddButton("Sell x10", function()
+    if itemName == "" then
+        print("Please input an item name.")
+        return
+    end
+    local inventory = game:GetService("ReplicatedStorage").Player_Data[player.Name].Inventory.Items
+    local itemFound = false
+    for _, item in ipairs(inventory:GetDescendants()) do
+        if item.Name == itemName then
+
+            itemFound = true
+            print("Item Found:", item.Name)
+
+            local settings = item.Settings
+            local id = settings.Id.Value
+            print("ID:", id)
+            local args = {
+                [1] = {
+                    [id] = 10
+                },
+                [2] = 0,
+                [3] = 0
+            }
+            game:GetService("ReplicatedStorage").Sell_Items_tang:InvokeServer(unpack(args))
+            
+            break 
+        end
+    end
+    if not itemFound then
+        print("Item not found:", itemName)
+    end
+end)
+
+SellItems:AddButton("Sell x1", function()
+    if itemName == "" then
+        print("Please input an item name.")
+        return
+    end
+    local inventory = game:GetService("ReplicatedStorage").Player_Data[player.Name].Inventory.Items
+    local itemFound = false
+    for _, item in ipairs(inventory:GetDescendants()) do
+        if item.Name == itemName then
+
+            itemFound = true
+            print("Item Found:", item.Name)
+
+            local settings = item.Settings
+            local id = settings.Id.Value
+            print("ID:", id)
+            local args = {
+                [1] = {
+                    [id] = 1
+                },
+                [2] = 0,
+                [3] = 0
+            }
+            game:GetService("ReplicatedStorage").Sell_Items_tang:InvokeServer(unpack(args))
+            
+            break 
+        end
+    end
+    if not itemFound then
+        print("Item not found:", itemName)
+    end
+end)
+
+local raceLabel = Profile:AddLabel("Race: N/A")
+Miscellaneous:AddDropdown('SelectRace', {
+    Values = { 'Human', 'Slayer', 'Demon', 'Hybrid'},
+    Default = 1, -- number index of the value / string
+    Multi = false, -- true / false, allows multiple choices to be selected
+    Text = 'Select Race',
+    Callback = function(v)
+        local localplayer = game:GetService("Players").LocalPlayer
+        local raceValue
+        if v == 'Human' then
+            raceValue = 1
+        elseif v == 'Slayer' then
+            raceValue = 2
+        elseif v == 'Demon' then
+            raceValue = 3
+        else
+            raceValue = 4 -- or any value for Hybrid race
+        end
+        game:GetService("ReplicatedStorage").Player_Data[localplayer.Name].Race.Value = raceValue
+    end
+})
+
+local isAutoBuyEnabled = false
+local autoBuyLoop
+
+local function buyBandage()
+    local args = {
+        [1] = "buysomething",
+        [2] = game:GetService("Players").LocalPlayer,
+        [3] = "Bandage",
+        [4] = game:GetService("ReplicatedStorage").Player_Data[game:GetService("Players").LocalPlayer.Name].Yen,
+        [5] = game:GetService("ReplicatedStorage").Player_Data[game:GetService("Players").LocalPlayer.Name].Inventory,
+        [6] = 10
+    }
+    
+    game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(unpack(args))
+end
+
+SellItems:AddToggle('AutoBuy', {
+    Text = 'Auto Buy Bandage',
+    Default = false,
+    Tooltip = 'Auto Buy',
+    Callback = function(state)
+        isAutoBuyEnabled = state
+        
+        if isAutoBuyEnabled then
+            autoBuyLoop = spawn(function()
+                while isAutoBuyEnabled do
+                    buyBandage()
+                    wait(0.1)
+                end
+            end)
+        else
+            if autoBuyLoop then
+                autoBuyLoop:Destroy()
+                autoBuyLoop = nil
+            end
+        end
+    end
+})
+
+ Miscellaneous:AddToggle('AutoMeditate', {
+    Text = 'Auto Meditate',
+    Default = false,
+    Callback = function(bool)
+                getgenv().AutoMeditate = bool
+    end,
+})
+
+function exec()
+    while wait() do
+        if getgenv().AutoMeditate then
+            pcall(function()
+                game:GetService("Players").LocalPlayer.PlayerGui.ExcessGuis["Meditate_gui"].Holder.LocalScript.Value.Value = 100
+            end)
+        end
+    end
+end
+
+spawn(exec)
+
+
+ Miscellaneous:AddToggle('AutoSplit', {
+    Text = 'Auto Split',
+    Default = false,
+    Callback = function(bool)
+               getgenv().AutoSplit = bool
+    end,
+ })
+ 
+ function exec()
+    while task.wait() do
+       if getgenv().AutoSplit then
+          pcall(function()
+             game:GetService("Players").LocalPlayer.PlayerGui.ExcessGuis["boulder_split_ui"].Holder.LocalScript.Value.Value = 10000
+          end)
+       end
+    end
+ end
+ 
+ spawn(exec)
+ 
+  Miscellaneous:AddToggle('NoDrown', {
+    Text = 'No Drown',
+    Default = false,
+    Callback = function(bool)
+               getgenv().NoDrown = not getgenv().NoDrown
+    end,
+})
+ 
+task.spawn(function()
+    while true do
+       for i, v in next, getgc(true) do
+          if type(v) == "table" and rawget(v, "swim_bar") then
+             if getgenv().NoDrown then
+                rawset(v, "swim_bar", {
+                   [1] = 2,
+                   [2] = 2
+                })
+             end
+          end
+       end
+       task.wait(6) -- Adiciona um intervalo de espera de 0.1 segundos
+    end
+end)
+
+CurrentValue = false
+
+local playerName = game.Players.LocalPlayer.Name
+
+local function changeValue(instance, value)
+    local args = {"Change_Value", instance, value}
+    game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(unpack(args))
+end
+
+local function changeColorSmoothly(instance, targetValue, duration)
+    local initialValue = instance.Value
+    local step = (targetValue - initialValue) / (duration / 0.01)
+    local currentTime = 0
+
+    while currentTime < duration do
+        instance.Value = instance.Value + step
+        changeValue(instance, instance.Value)
+        wait(0.01)
+        currentTime = currentTime + 0.01
+    end
+end
+
+local skinColor = game:GetService("ReplicatedStorage").Player_Data[playerName].Customization.Skin_Color
+
+local toggleEnabled = false
+
+local function toggleScript()
+    toggleEnabled = not toggleEnabled
+    if toggleEnabled then
+        spawn(function()
+            while toggleEnabled do
+                changeColorSmoothly(skinColor.R, math.random(), 0.15)
+                changeColorSmoothly(skinColor.G, math.random(), 0.15)
+                changeColorSmoothly(skinColor.B, math.random(), 0.15) 
+            end
+        end)
+    end
+end
+
+local ToggleSwampyEnabled = false
+local ToggleDreamEnabled = false
+local ToggleIceEnabled = false
+local ToggleSoundEnabled = false
+local ToggleShockWaveEnabled = false
+
+
+local GodModes = Tabs.Misc:AddRightGroupbox('God Modes')
+local Modes = Tabs.Misc:AddRightGroupbox('Modes')
+
+GodModes:AddToggle('Swamp', {
+    Text = 'Swamp',
+    Default = false,
+    Callback = function(v)
+        ToggleSwampyEnabled = v
+        
+        if ToggleSwampyEnabled then
+            ToggleDreamEnabled = false
+            ToggleIceEnabled = false
+            ToggleSoundEnabled = false
+            ToggleShockWaveEnabled = false
+            toggleInvincibleSwampy()
+        end
+    end
+})
+
+GodModes:AddToggle('Dream', {
+    Text = 'Dream',
+    Default = false,
+    Callback = function(v)
+        ToggleDreamEnabled = v
+        
+        if ToggleDreamEnabled then
+            ToggleSwampyEnabled = false
+            ToggleIceEnabled = false
+            ToggleSoundEnabled = false
+            ToggleShockWaveEnabled = false
+            toggleInvincibleDream()
+        end
+    end
+})
+
+GodModes:AddToggle('Ice', {
+    Text = 'Ice',
+    Default = false,
+    Callback = function(v)
+        ToggleIceEnabled = v
+        
+        if ToggleIceEnabled then
+            ToggleSwampyEnabled = false
+            ToggleDreamEnabled = false
+            ToggleSoundEnabled = false
+            ToggleShockWaveEnabled = false
+            toggleInvincibleIce()
+        end
+    end
+})
+
+GodModes:AddToggle('BloodGM', {
+   Text = 'Blood',
+   Default = false, -- Default value (true / false)
+   Callback = function(state)
+      if state then
+         _G.BloodGM = true
+   while _G.BloodGM do
+   local args = {
+      [1] = "skil_ting_asd",
+      [2] = game:GetService("Players").LocalPlayer,
+      [3] = "explosive_demon_art_blood_burst",
+      [4] = 1
+   }
+   
+   game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("To_Server"):WaitForChild("Handle_Initiate_S"):FireServer(unpack(args))
+   wait(0.1)
+   end
+      else
+         _G.BloodGM = false
+         while _G.BloodGM do
+         local args = {
+            [1] = "skil_ting_asd",
+            [2] = game:GetService("Players").LocalPlayer,
+            [3] = "explosive_demon_art_blood_burst",
+            [4] = 1
+         }
+         
+         game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("To_Server"):WaitForChild("Handle_Initiate_S"):FireServer(unpack(args))
+         wait(0.1)
+         end
+      end
+   end    
+})
+
+
+GodModes:AddToggle('Sound', {
+    Text = 'Sound',
+    Default = false,
+    Callback = function(v)
+        ToggleSoundEnabled = v
+        
+        if ToggleSoundEnabled then
+            ToggleSwampyEnabled = false
+            ToggleDreamEnabled = false
+            ToggleIceEnabled = false
+            ToggleShockWaveEnabled = false
+            toggleInvincibleSound()
+        end
+    end
+})
+
+GodModes:AddToggle('ShockWave', {
+    Text = 'ShockWave',
+    Default = false,
+    Callback = function(v)
+        ToggleShockWaveEnabled = v
+        
+        if ToggleShockWaveEnabled then
+            ToggleSwampyEnabled = false
+            ToggleDreamEnabled = false
+            ToggleIceEnabled = false
+            ToggleSoundEnabled = false
+            toggleInvincibleShockWave()
+        end
+    end
+})
+
+function toggleInvincibleSwampy()
+    while ToggleSwampyEnabled do
+        local ohString1 = "skil_ting_asd"
+        local ohInstance2 = game:GetService("Players").LocalPlayer
+        local ohString3 = "swamp_bda_swamp_domain"
+        local ohNumber4 = 1
+        game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(ohString1, ohInstance2, ohString3, ohNumber4)
+        game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(ohString1, ohInstance2, ohString3, ohNumber4)
+        task.wait(0.5)
+    end
+end
+
+function toggleInvincibleDream()
+    while ToggleDreamEnabled do
+        local args = {
+            [1] = "skil_ting_asd",
+            [2] = game:GetService("Players").LocalPlayer,
+            [3] = "dream_bda_flesh_monster",
+            [4] = 1
+        }
+        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("To_Server"):WaitForChild("Handle_Initiate_S"):FireServer(unpack(args))
+        task.wait(0.5)
+    end
+end
+
+function toggleInvincibleIce()
+    while ToggleIceEnabled do
+        local ohString1 = "skil_ting_asd"
+        local ohInstance2 = game:GetService("Players").LocalPlayer
+        local ohString3 = "ice_demon_art_bodhisatva"
+        local ohNumber4 = 1
+        game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(ohString1, ohInstance2, ohString3, ohNumber4)
+        task.wait(0.5)
+    end
+end
+
+function toggleInvincibleSound()
+    while ToggleSoundEnabled do
+        local ohString1 = "skil_ting_asd"
+        local ohInstance2 = game:GetService("Players").LocalPlayer
+        local ohString3 = "sound_breathing_smoke_screen"
+        local ohNumber4 = 1
+        game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(ohString1, ohInstance2, ohString3, ohNumber4)
+        task.wait(0.5)
+    end
+end
+
+function toggleInvincibleShockWave()
+    while ToggleShockWaveEnabled do
+        local A_1 = "skil_ting_asd"
+        local A_2 = game:GetService("Players").LocalPlayer
+        local A_3 = "akaza_bda_compass_needle"
+        local A_4 = 1
+        local Event = game:GetService("ReplicatedStorage").Remotes["To_Server"]["Handle_Initiate_S"]
+        Event:FireServer(A_1, A_2, A_3, A_4)
+        task.wait(0.5)
+    end
+end
+
+
+
+GodModes:AddToggle('Water', {
+    Text = 'Water',
+    Default = false,
+    Callback = function(enabled)
+        if enabled then
+            WaterGod = true
+            while WaterGod do
+               local ohString1 = "skil_ting_asd"
+               local ohInstance2 = game:GetService("Players").LocalPlayer
+               local ohString3 = "Water_fall_basin"
+               local ohNumber4 = 1
+               game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(ohString1, ohInstance2, ohString3, ohNumber4)
+               task.wait(0.5)
+            end
+         else
+            WaterGod = false
+         end
+      end,
+   })
+   
+   GodModes:AddToggle('FlameGM', {
+   Text = 'Flame',
+   Default = false, -- Default value (true / false)
+   Callback = function(state)
+      if state then
+         _G.FlameGM = true
+         while _G.FlameGM do
+         local args = {
+            [1] = "skil_ting_asd",
+            [2] = game:GetService("Players").LocalPlayer,
+            [3] = "flame_breathing_flaming_eruption",
+            [4] = 1
+          }
+   
+         game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("To_Server"):WaitForChild("Handle_Initiate_S"):FireServer(unpack(args))
+      wait(0.1)
+         end
+      else
+         _G.FlameGM = false
+         while _G.FlameGM do
+         local args = {
+            [1] = "skil_ting_asd",
+            [2] = game:GetService("Players").LocalPlayer,
+            [3] = "flame_breathing_flaming_eruption",
+            [4] = 1
+         }
+         
+         game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("To_Server"):WaitForChild("Handle_Initiate_S"):FireServer(unpack(args))
+         wait(0.1)
+         end
+      end
+   end    
+})
+
+GodModes:AddToggle('BeastGM', {
+   Text = 'Beast',
+   Default = false, -- Default value (true / false)
+   Callback = function(state)
+      if state then
+         _G.BeastGM = true
+         while _G.BeastGM do
+         local args = {
+            [1] = "skil_ting_asd",
+            [2] = game:GetService("Players").LocalPlayer,
+            [3] = "Beast_breathing_devouring_slash",
+            [4] = 1
+          }
+   
+         game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("To_Server"):WaitForChild("Handle_Initiate_S"):FireServer(unpack(args))
+      wait(0.5)
+         end
+      else
+         _G.BeastGM = false
+         while _G.BeastGM do
+         local args = {
+            [1] = "skil_ting_asd",
+            [2] = game:GetService("Players").LocalPlayer,
+            [3] = "Beast_breathing_devouring_slash",
+            [4] = 1
+         }
+         
+         game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("To_Server"):WaitForChild("Handle_Initiate_S"):FireServer(unpack(args))
+         wait(0.5)
+         end
+      end
+   end    
+})
+
+GodModes:AddToggle('InsectGM', {
+   Text = 'Insect',
+   Default = false, -- Default value (true / false)
+   Callback = function(state)
+      if state then
+         _G.InsectGM = true
+         while _G.InsectGM do
+         local args = {
+            [1] = "skil_ting_asd",
+            [2] = game:GetService("Players").LocalPlayer,
+            [3] = "insect_breathing_dance_of_the_centipede",
+            [4] = 1
+          }
+   
+         game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("To_Server"):WaitForChild("Handle_Initiate_S"):FireServer(unpack(args))
+      wait(0.5)
+         end
+      else
+         _G.InsectGM = false
+         while _G.InsectGM do
+         local args = {
+            [1] = "skil_ting_asd",
+            [2] = game:GetService("Players").LocalPlayer,
+            [3] = "insect_breathing_dance_of_the_centipede",
+            [4] = 1
+         }
+         
+         game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("To_Server"):WaitForChild("Handle_Initiate_S"):FireServer(unpack(args))
+         wait(0.5)
+         end
+      end
+   end    
+})
+
+GodModes:AddToggle('WindGM', {
+   Text = 'Wind',
+   Default = false, -- Default value (true / false)
+   Callback = function(state)
+      if state then
+         _G.WindGM = true
+         while _G.WindGM do
+         local args = {
+            [1] = "skil_ting_asd",
+            [2] = game:GetService("Players").LocalPlayer,
+            [3] = "Wind_breathing_black_wind_mountain_mist",
+            [4] = 1
+          }
+   
+         game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("To_Server"):WaitForChild("Handle_Initiate_S"):FireServer(unpack(args))
+      wait(0.5)
+         end
+      else
+         _G.WindGM = false
+         while _G.WindGM do
+         local args = {
+            [1] = "skil_ting_asd",
+            [2] = game:GetService("Players").LocalPlayer,
+            [3] = "Wind_breathing_black_wind_mountain_mist",
+            [4] = 1
+         }
+         
+         game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("To_Server"):WaitForChild("Handle_Initiate_S"):FireServer(unpack(args))
+         wait(0.5)
+         end
+      end
+   end    
+})
+
+   Modes:AddToggle('Kamado', {
+    Text = 'Kamado',
+    Default = false,
+    Callback = function(v)
+        getgenv().god = v
+        if getgenv().god then
+            local ohBoolean1 = true
+
+            game:GetService("ReplicatedStorage").Remotes.heal_tang123asd:FireServer(ohBoolean1)
+        elseif not getgenv().god then
+            local ohBoolean1 = false
+
+            game:GetService("ReplicatedStorage").Remotes.heal_tang123asd:FireServer(ohBoolean1)
+        end
+end
+})
+
+GodModes:AddToggle('InfBR', {
+    Text = 'Inf Breath Regen',
+    Default = false,
+    Callback = function(bool)
+        if bool then
+            toggleActive = true
+            toggleBreathing()
+        else
+            toggleActive = false
+        end
+    
+    function toggleBreathing()
+        if toggleActive then
+            game:GetService("ReplicatedStorage").Remotes.regeneration_breathing_remote:FireServer(true)
+            wait(25)
+            game:GetService("ReplicatedStorage").Remotes.regeneration_breathing_remote:FireServer(false)
+            wait(0.01) -- Aguarda uma pequena fração de segundo para evitar uma chamada imediata ao loop
+            toggleBreathing()
+        end
+    end
+    end
+})
+
+Modes:AddToggle('WarFans', {
+    Text = 'WarFans Mode',
+    Default = false,
+    Callback = function(bool)
+        toggleActivated = bool -- Atualiza o estado do toggle
+
+        if toggleActivated then
+            running = true -- Inicia o loop
+            while running do -- Executa o loop enquanto running for verdadeiro
+                game:GetService("ReplicatedStorage").Remotes.war_Drums_remote:FireServer(true)
+                wait(20.1) -- Aguarda um tempo antes de reiniciar o buff (ajuste conforme necessário)
+            end
+        else
+            running = false -- Interrompe o loop
+            game:GetService("ReplicatedStorage").Remotes.war_Drums_remote:FireServer(false)
+        end
+        end
+    })
+
+    Modes:AddToggle('Rengoku', {
+        Text = 'Rengoku (Human)',
+        Default = false,
+        Callback = function(bool)
+            toggleActivated = bool -- Atualiza o estado do toggle
+
+    if toggleActivated then
+        running = true -- Inicia o loop
+        while running do -- Executa o loop enquanto running for verdadeiro
+            game:GetService("ReplicatedStorage").Remotes.heart_ablaze_mode_remote:FireServer(true)
+            wait(28) -- Aguarda um tempo antes de reiniciar o buff (ajuste conforme necessário)
+            game:GetService("ReplicatedStorage").Remotes.heart_ablaze_mode_remote:FireServer(false)
+            wait(3)
+        end
+    else
+        running = false -- Interrompe o loop
+        game:GetService("ReplicatedStorage").Remotes.heart_ablaze_mode_remote:FireServer(false)
+    end
+    end
+})
+
+Modes:AddToggle('GodSpeed', {
+    Text = 'God Speed (Human)',
+    Default = false,
+    Callback = function(bool)
+        toggleActivated = bool -- Atualiza o estado do toggle
+
+        local args = {
+            [1] = toggleActivated
+        }
+
+        game:GetService("ReplicatedStorage").Remotes.thundertang123:FireServer(args[1])
+    end
+})
+
+Modes:AddToggle('UniGodMode', {
+   Text = 'Scythe (35+ Mastery)',
+   Default = false, -- Default value (true / false)
+Tooltip = '[Must Have All Sword and Scythe Equipped in Inventory and All Have Mastery 35+]',
+   Callback = function(state)
+      if state then
+         _G.godmode2 = true
+   while _G.godmode2 do
+   local args = {
+      [1] = "skil_ting_asd",
+      [2] = game:GetService("Players").LocalPlayer,
+      [3] = "scythe_asteroid_reap",
+      [4] = 1
+   }
+   
+   game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("To_Server"):WaitForChild("Handle_Initiate_S"):FireServer(unpack(args))
+   wait(0.1)
+   end
+      else
+         _G.godmode2 = false
+         while _G.godmode2 do
+         local args = {
+            [1] = "skil_ting_asd",
+            [2] = game:GetService("Players").LocalPlayer,
+            [3] = "scythe_asteroid_reap",
+            [4] = 1
+         }
+         
+         game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("To_Server"):WaitForChild("Handle_Initiate_S"):FireServer(unpack(args))
+         wait(0.1)
+         end
+      end
+   end    
+})
+
+
+Modes:AddToggle('SemiGodMode2', {
+   Text = 'Breathing Heal Mode (All Races)',
+   Default = false, -- Default value (true / false)
+   Tooltip = 'Infinite Heals', -- Information shown when you hover over the toggle
+   Callback = function(state)
+       if state then
+           game:GetService("ReplicatedStorage").Remotes.regeneration_breathing_remote:FireServer(true)
+       else
+           game:GetService("ReplicatedStorage").Remotes.regeneration_breathing_remote:FireServer(false)
+       end
+   end
+})
+
+
+    
+    
+    
+
+
+
+
+---Web Hook
+local Webhook = Tabs.Main:AddRightGroupbox('WebHook')
+
+local url = "" -- Variável para armazenar o valor do webhook
+local isSendingEnabled = false -- Variável para controlar se o envio está habilitado ou não
+local itemDelay = 5 -- Atraso em segundos entre o envio de cada item
+local waitForPickup = true -- Defina como true se você quiser esperar o jogador pegar o item antes de enviar a mensagem
+
+Webhook:AddInput('WebHook', {
+    Default = 'Your Url',
+    Numeric = false, -- true / false, only allows numbers
+    Finished = false, -- true / false, only calls callback when you press enter
+
+    Text = 'Drops WebHook',
+
+
+    Placeholder = 'Your Webhook', -- placeholder text when the box is empty
+    -- MaxLength is also an option which is the max length of the text
+
+    Callback = function(v)
+        url = v
+    end,
+})
+
+Webhook:AddToggle('DropWebHook', {
+    Text = 'Send WebHook',
+    Default = false,
+    Callback = function(enabled)
+        isSendingEnabled = enabled
+    end,
+})
+
+task.spawn(function()
+    while task.wait() do
+        pcall(function()
+            if isSendingEnabled then
+                -- Se o envio estiver habilitado, execute o código para enviar a mensagem no webhook
+                -- Verifique se 'url' possui um valor válido antes de enviar a mensagem
+                if url and url ~= "" then
+                    local player = game.Players.LocalPlayer
+                    local playerName = player.Name
+                    local userId = player.UserId
+                    local avatarUrl = string.format("https://thumbnails.roblox.com/v1/users/avatar?userIds=%d&size=180x180&format=Png&isCircular=true", userId)
+
+                    local lootChests = game:GetService("Workspace").Debree:GetDescendants()
+                    for _, chest in ipairs(lootChests) do
+                        if chest.Name == "Loot_Chest" and chest:FindFirstChild("Drops") then
+                            local remote = chest:WaitForChild("Add_To_Inventory")
+                            for _, drop in ipairs(chest.Drops:GetChildren()) do
+                                remote:InvokeServer(drop.Name)
+                                if waitForPickup then
+                                    -- Aguardar o jogador pegar o item antes de enviar a mensagem
+                                    repeat
+                                        task.wait()
+                                    until not drop:IsDescendantOf(player.Backpack) and not drop:IsDescendantOf(player.Character)
+                                end
+
+                                -- Enviar a mensagem no webhook
+                                local data = {
+                                    ["content"] = "*Drop!!!*",
+                                    ["embeds"] = {
+                                        {
+                                            ["title"] = "GAME DROPS!",
+                                            ["type"] = "rich",
+                                            ["color"] = tonumber(0x7269da),
+                                            ["fields"] = {
+                                                {
+                                                    ["name"] = "Drop:",
+                                                    ["value"] = "| "..drop.Name.." |",
+                                                    ["inline"] = true
+                                                },
+                                                {
+                                                    ["name"] = "Username",
+                                                    ["value"] = "|| "..playerName.." ||",
+                                                    ["inline"] = true
+                                                },
+                                            },
+                                            ["thumbnail"] = {
+                                                ["url"] = avatarUrl,
+                                            }
+                                        }
+                                    }
+                                }
+
+                                local headers = {
+                                    ["content-type"] = "application/json"
+                                }
+
+                                local httpService = game:GetService("HttpService")
+                                local jsonData = httpService:JSONEncode(data)
+
+                                local httpModule = http_request or request or HttpPost or syn.request
+                                local requestParams = {
+                                    Url = url,
+                                    Method = "POST",
+                                    Headers = headers,
+                                    Body = jsonData
+                                }
+
+                                httpModule(requestParams)
+
+                                -- Aguardar o atraso entre os envios de item
+                                task.wait(itemDelay)
+                            end
+                        end
+                    end
+                end
+            end
+        end)
+    end
+end)
+
+local HttpService = game:GetService("HttpService")
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+
+Webhook:AddInput('KickWebHook', {
+    Default = 'Your Url',
+    Numeric = false, -- true / false, only allows numbers
+    Finished = false, -- true / false, only calls callback when you press enter
+
+    Text = 'Kick WebHook',
+
+
+    Placeholder = 'Your Webhook', -- placeholder text when the box is empty
+    -- MaxLength is also an option which is the max length of the text
+
+    Callback = function(v)
+        url = v
+    end,
+})
+
+Webhook:AddToggle('KickWebHook', {
+    Text = 'Send WebHook',
+    Default = false,
+    Callback = function(enabled)
+        isSendingEnabled = enabled
+    end,
+})
+
+local function CheckPlayerExpulsion()
+    local po = game.CoreGui.RobloxPromptGui.promptOverlay
+
+    po.ChildAdded:Connect(function(a)
+        if a.Name == 'ErrorPrompt' and isSendingEnabled and url then
+            -- O jogador local foi expulso do jogo
+            local playerName = player.Name
+            local userId = player.UserId
+            local avatarUrl = string.format("https://thumbnails.roblox.com/v1/users/avatar?userIds=%d&size=180x180&format=Png&isCircular=true", userId)
+
+            local data = {
+                ["content"] = "Estupido",
+                ["embeds"] = {
+                    {
+                        ["title"] = "Expulsão!",
+                        ["type"] = "rich",
+                        ["color"] = tonumber(0xFF0000),
+                        ["fields"] = {
+                            {
+                                ["name"] = "Username",
+                                ["value"] = "|| "..playerName.." ||",
+                                ["inline"] = true
+                            },
+                        },
+                        ["thumbnail"] = {
+                            ["url"] = avatarUrl,
+                        }
+                    }
+                }
+            }
+
+            local headers = {
+                ["content-type"] = "application/json"
+            }
+
+            local jsonData = HttpService:JSONEncode(data)
+
+            local httpModule = http_request or request or HttpPost or syn.request
+            local requestParams = {
+                Url = url,
+                Method = "POST",
+                Headers = headers,
+                Body = jsonData
+            }
+
+            httpModule(requestParams)
+        end
+    end)
+end
+
+spawn(CheckPlayerExpulsion)
+
+Profile:AddDivider()
+
+   Profile:AddInput('DisplayName', {
+      Default = 'Change Display Name',
+      Numeric = false,
+      Finished = false,
+      Text = 'Change Display Name',
+      Placeholder = 'Change Display Name',
+      Callback = function(value)
+         game:GetService("Players").LocalPlayer.DisplayName = value
+      end
+  })
+   
+Profile:AddButton("Destroy Damage Logs", function()
+   local playerGui = game:GetService("Players").LocalPlayer.PlayerGui
+   if playerGui:FindFirstChild("Pop_Ups") then
+       local bossHp = playerGui.Pop_Ups:FindFirstChild("Bosshp")
+       if bossHp then
+           local damageLog = bossHp:FindFirstChild("Damage_Log")
+           if damageLog then
+               damageLog:Destroy()
+           end
+       end
+   end
+end)
+
+Profile:AddButton("Spin Demon Art", function()
+    local args = {
+       [1] = "check_can_spin_demon_art"
+   }
+   
+   game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("To_Server"):WaitForChild("Handle_Initiate_S_"):InvokeServer(unpack(args))    
+end)
+
+
+-- Library functions
+-- Sets the watermark visibility
+Library:SetWatermarkVisibility(true)
+
+-- Example of dynamically-updating watermark with common traits (fps and ping)
+local FrameTimer = tick()
+local FrameCounter = 0;
+local FPS = 60;
+
+local WatermarkConnection = game:GetService('RunService').RenderStepped:Connect(function()
+    FrameCounter += 1;
+
+    if (tick() - FrameTimer) >= 1 then
+        FPS = FrameCounter;
+        FrameTimer = tick();
+        FrameCounter = 0;
+    end;
+
+    Library:SetWatermark(('Yuki Hub | Map1 1.0 | %s fps | %s ms'):format(
+        math.floor(FPS),
+        math.floor(game:GetService('Stats').Network.ServerStatsItem['Data Ping']:GetValue())
+    ));
+end);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- UI Settings
+local MenuGroup = Tabs['UI Settings']:AddLeftGroupbox('Menu')
+
+-- I set NoUI so it does not show up in the keybinds menu
+MenuGroup:AddButton('Unload', function() Library:Unload() end)
+MenuGroup:AddLabel('Menu bind'):AddKeyPicker('MenuKeybind', { Default = 'End', NoUI = true, Text = 'Menu keybind' })
+
+Library.ToggleKeybind = Options.MenuKeybind -- Allows you to have a custom keybind for the menu
+
+-- Addons:
+-- SaveManager (Allows you to have a configuration system)
+-- ThemeManager (Allows you to have a menu theme system)
+
+-- Hand the library over to our managers
+ThemeManager:SetLibrary(Library)
+SaveManager:SetLibrary(Library)
+
+-- Ignore keys that are used by ThemeManager.
+-- (we dont want configs to save themes, do we?)
+SaveManager:IgnoreThemeSettings()
+
+-- Adds our MenuKeybind to the ignore list
+-- (do you want each config to have a different menu key? probably not.)
+SaveManager:SetIgnoreIndexes({ 'MenuKeybind' })
+
+-- use case for doing it this way:
+-- a script hub could have themes in a global folder
+-- and game configs in a separate folder per game
+ThemeManager:SetFolder('MyScriptHub')
+SaveManager:SetFolder('MyScriptHub/specific-game')
+
+-- Builds our config menu on the right side of our tab
+SaveManager:BuildConfigSection(Tabs['UI Settings'])
+
+-- Builds our theme menu (with plenty of built in themes) on the left side
+-- NOTE: you can also call ThemeManager:ApplyToGroupbox to add it to a specific groupbox
+ThemeManager:ApplyToTab(Tabs['UI Settings'])
+
+-- You can use the SaveManager:LoadAutoloadConfig() to load a config
+-- which has been marked to be one that auto loads!
+SaveManager:LoadAutoloadConfig()
+
+
+
+
+
+
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                

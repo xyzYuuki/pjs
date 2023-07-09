@@ -77,19 +77,19 @@ if checkAccess(wl_key) then
     local placeID7 = 13883279773
 
     if game.PlaceId == placeID1 then
-        loadstring(game:HttpGet(""))() --Menu
+        print "aa" --Menu
     elseif game.PlaceId == placeID2 then
-        loadstring(game:HttpGet(""))() --Mapa1
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/xyzYuuki/pjs/main/Map1"))() --Mapa1
     elseif game.PlaceId == placeID3 then
-        loadstring(game:HttpGet(""))() -- Mapa2
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/xyzYuuki/pjs/main/Map2"))() -- Mapa2
     elseif game.PlaceId == placeID4 then
-        loadstring(game:HttpGet(""))() --Ouwi
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/xyzYuuki/pjs/main/Ouwigahara"))() --Ouwi
     elseif game.PlaceId == placeID5 then
-        loadstring(game:HttpGet(""))() --Mugen
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/xyzYuuki/pjs/main/Mugen"))() --Mugen
     elseif game.PlaceId == placeID6 then
-        loadstring(game:HttpGet(""))() --Mapa2
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/xyzYuuki/pjs/main/Map2"))() --Mapa2
                 elseif game.PlaceId == placeID7 then
-        loadstring(game:HttpGet(""))() --Mapa1
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/xyzYuuki/pjs/main/Map1"))() --Mapa1
                 else
                     error("Place ID inválido.")
                 end

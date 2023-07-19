@@ -14,6 +14,7 @@ local storedData = {
     {HWID = "05135901-5098-4D25-8D21-86185E856EF1"}, --Leo 6
     {HWID = "4CC9C114-A4D0-4792-8B1A-9A6AC3DB03B8"}, --Leo 7
     {HWID = "1D72D119-28AD-4F82-A9E3-C078BB36C878"}, --Leo 8
+    {HWID = "F7B017D3-4643-42C2-9AD7-0E055A959DA"}, angelbelial
 }
 
 local playerHWID = game:GetService("RbxAnalyticsService"):GetClientId()

@@ -1,6 +1,6 @@
 local storedData = {
     {HWID = "0E9085C5-C7BD-4C84-8CFA-580FEA22AE06"}, --yuki login
-    {HWID = "A0D6238B-D5BD-46CA-97FB-7A4448C54ACB"}, -- New Bonnie life time Login
+    {HWID = "8B05C5F3-E194-4E1E-9D13-9887948A17D1"}, -- New Bonnie life time Login
     {HWID = "DD4CCE48-BA5E-4322-9EDC-8F68B4EFCD06"}, -- Melody life time Login
     {HWID = "5EF053AD-59DA-4876-900D-9CD7DC1009FE"}, -- xPatrick life time Login
     {HWID = "59C13471-9984-4BDE-9108-83B48E757E11"}, -- Pumpkin early acess
